@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<!--<![endif]-->
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>inNOminds Pizzeria</title>
+
+	<link rel="stylesheet" type="text/css" media="all" href="../css/style.css">
+	<style type="text/css">
+		img.wp-smiley,
+		img.emoji {
+			display: inline !important;
+			border: none !important;
+			box-shadow: none !important;
+			height: 1em !important;
+			width: 1em !important;
+			margin: 0 .07em !important;
+			vertical-align: -0.1em !important;
+			background: none !important;
+			padding: 0 !important;
+		}
+	</style>
+	<link rel="stylesheet" id="contact-form-7-css" href="../css/styles.css" type="text/css" media="all">
+
+
+</head>
+
+<body class="page page-id-52 page-template-default single-author singular two-column right-sidebar">
+	<div id="page" class="hfeed">
+		<header id="branding">
+			<h1 id="site-title">
+				<span>
+					<a href="#" title="Home Page" rel="home">InNOminds</a>
+				</span>
+			</h1>
+			<div id="site-description"></div>
+			<div id="mobilebuttons">
+				<img id="logo" alt="My Logo">
+				<img id="searchicon" alt="Show search" role="button" src="../images/search-button.png">
+				<img id="menuicon" alt="Show menu" role="button" src="../images/menu-button.png">
+			</div>
+
+
+		</header>
+		<!-- #branding -->
+
+		<form method="get" id="searchform" action="/">
+			<label for="s" class="assistive-text">Search</label>
+			<input type="text" class="field" name="s" id="s" placeholder="Search">
+			<input type="submit" class="submit" name="submit" id="searchsubmit" value="Search">
+		</form>
+
+		<nav id="menu">
+			<div class="menu-main-menu-container">
+				<ul id="menu-main-menu" class="menu">
+					<li id="menu-item-61" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-61">
+						<a href="/">Home</a>
+					</li>
+					<li id="menu-item-57" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-57">
+						<a title="Projects" href="/">products</a>
+					</li>
+					<li id="menu-item-59" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59">
+						<a href="#">services</a>
+					</li>
+					<li id="menu-item-416" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-416">
+						<a href="/">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- #access -->
+
+		<div id="main">
+			<div id="secondary" class="widget-area">
+				<div class="toc">
+					<div class="figcontent focusable" id="onPageContent" tabindex="0">
+
+					</div>
+				</div>
+			</div>
+			<!-- #secondary .widget-area -->
+			<div id="primary">
+				<div id="content">
+					<article>
+						<div class="entry-content">
+
+							<body>
+								<form id="registrationForm">
+									<fieldset>
+										<legend aria-label="Customer Registration page. This page captures your Personal Details">
+											<h1 class="entry-title">Registration</h1>
+										</legend>
+										<div>
+											<label aria-label="Enter your first name">First Name
+												<input id="given-name" name="given-name" type="text" placeholder="First name">
+											</label>
+										</div>
+										<div>
+											<label aria-label="Enter your last name">Last Name
+												<input id="family-name" name="family-name" type="text" placeholder="Last name" required>
+											</label>
+										</div>
+										<div>
+											<label aria-label="Enter your Date of Birth in month-date-year">Date of Birth
+												<input id="dob" name="dob" type="date" required>
+											</label>
+										</div>
+										<div>
+											<label aria-label="Select Sex">Sex
+												<select id="sex" name="sex" aria-label="Select Sex">
+													<option selected="selected" value="1">Please choose one…</option>
+													<option value="2">Male</option>
+													<option value="3">Female</option>
+													<option value="4">Other</option>
+												</select>
+											</label>
+										</div>
+										<div>
+											<label aria-label="Enter your email address">Email
+												<input id="email" name="email" type="email" placeholder="example@domain.com" required>
+											</label>
+										</div>
+										<div>
+											<label aria-label="Enter your password">New Password
+												<input id="pwd" name="pwd" type="password" placeholder="password" required>
+											</label>
+										</div>
+										<div>
+											<label aria-label="Enter your phone number">Telephone
+												<input id="phone" name="phone" type="tel" placeholder="Eg. +91 9916 109 951" lable="Enter phone number">
+											</label>
+										</div>
+										<div>
+											<button id="myBtn1" type=button aria-label="Submit Registration" onclick="goto('loginForm')">Submit Registration</button>
+										</div>
+									</fieldset>
+								</form>
+
+								<form id="loginForm">
+									<fieldset>
+										<legend>Login Form</legend>
+										<div>
+											<label>Email address
+												<input type="text" id="userEmail" name="userEmail" required>
+												</textarea>
+											</label>
+										</div>
+										<div>
+											<label>Password
+												<input type="text" id="passowrd" name="address2" required>
+												</textarea>
+											</label>
+										</div>
+										<div>
+											<button id="myBtn1" type=button aria-label="Sign in" onclick="goto('productDetails')">Sign In</button>
+										</div>
+										<div>
+											<a href="#" onclick="goto('registrationForm')" aria-label="Sign Up">Sign Up</a>
+										</div>
+									</fieldset>
+								</form>
+								<form id="productDetails">
+									<fieldset>
+										<legend tabindex="1">Pizza Order</legend>
+										<div class="products">
+											<div class="product" tabindex="1">
+												<label>
+													<img src="../images/1371006.png" title="Pizza Hut Veggie Supreme Pizza" alt="" />
+													<div>
+														<strong>Veggie Supreme.</strong>
+													</div>
+													<div>
+
+														Ingredients: Onion, Capsicum, Mushroom, Red Paprika, Black Olives, Sweet Corn
+
+													</div>
+													<div>
+														<span>
+															<small>Price</small>
+															<strong>$49</strong>
+														</span>
+
+													</div>
+													<input id="veggie" type="checkbox" name="pizza1" value="veggie">
+
+
+														<span>
+															<select name="quantity" disabled="disabled">
+																<option>Choose Quantity</option>
+																<option value="1">1</option>
+																<option value="2"> 2</option>
+																<option value="3">3</option>
+															</select>
+														</span>
+
+												</label>
+											</div>
+											<div class="product" tabindex="2">
+												<label>
+													<img src="../images/1371007.png" title=" Hot &amp; Fresh Exotica Italian Veg Pizza " alt="" />
+													<div>
+														<span>Supreme</span>
+														<strong>Exotica.</strong>
+													</div>
+													<div>
+														Ingredients: Red Capsicum, Green Capsicum, Baby Corn, Black Olives, Jalapenos
+													</div>
+													<div>
+														<span>
+															<small>Price</small>
+															<strong> $40</strong>
+														</span>
+
+													</div>
+													<input id="veggie" type="checkbox" name="pizza2" value="exotica">
+
+
+													<span>
+															<select name="quantity">
+																<option>Choose Quantity</option>
+																<option value="1">1</option>
+																<option value="2"> 2</option>
+																<option value="3">3</option>
+															</select>
+														</span>
+
+												</label>
+											</div>
+
+											<div class="product" tabindex="3">
+												<label>
+													<img src="../images/1371005.png" title="Paneer Vegorama " alt="" />
+													<div class="product-name">
+														<span>Supreme</span>
+														<strong>Paneer Vegorama.</strong>
+													</div>
+													<div>
+														<span>
+
+															Ingredients: Paneer, Onion, Capsicum, Black Olives, Red Paprika
+														</span>
+
+													</div>
+													<div>
+														<span>
+															<small>Price</small>
+															<strong>$41</strong>
+														</span>
+
+													</div>
+													<input id="veggie" type="checkbox" name="pizza3" value="Paneer">
+															<span>
+																<select name="quantity">
+																	<option>Choose Quantity</option>
+																	<option value="1">1</option>
+																	<option value="2"> 2</option>
+																	<option value="3">3</option>
+																</select>
+															</span>
+
+												</label>
+											</div>
+											<div class="product" tabindex="4">
+												<label>
+													<img src="../images/1371001.png" title="Tandoori Paneer Pizza" alt="" />
+													<div class="product-name">
+														<span>Signature</span>
+														<strong>Tandoori Paneer.</strong>
+													</div>
+													<div>
+														<span>
+															Ingredients: Paneer, Onion, Capsicum, Red Paprika &amp; Tomato
+														</span>
+
+													</div>
+													<div>
+														<span>
+															<small>Price</small>
+															<strong>$ 44</strong>
+														</span>
+
+													</div>
+													<input id="veggie" type="checkbox" name="pizza4" value="PaneerTadoori">
+															<span>
+																<select name="quantity">
+																	<option>Choose Quantity</option>
+																	<option value="1">1</option>
+																	<option value="2"> 2</option>
+																	<option value="3">3</option>
+																</select>
+															</span>
+
+												</label>
+											</div>
+											<div style="width:100%;float:right;">
+												<button id="myBtn1" type=button aria-label="Continue next" onclick="goto('customizeProduct')">Continue</button>
+											</div>
+									</fieldset>
+								</form>
+								<form id="customizeProduct">
+									<fieldset>
+
+										<legend tabindex=1>Select your pizza toppings:</legend>
+
+										<label for="ham">Ham :
+											<input id="ham" type="checkbox" name="toppings" value="ham">
+										</label>
+										<label for="pepperoni">Pepperoni :
+											<input id="pepperoni" type="checkbox" name="toppings" value="pepperoni">
+										</label>
+										<label for="mushrooms">Mushrooms :
+											<input id="mushrooms" type="checkbox" name="toppings" value="mushrooms">
+										</label>
+										<label for="olives">Olives :
+											<input id="olives" type="checkbox" name="toppings" value="olives">
+										</label>
+										<label for="cheese">Extra Cheese :
+												<input id="cheese" type="checkbox" name="toppings" value="cheese">
+											</label>
+										<div>
+											<button id="modifyPizza" type=button onclick="goto('productDetails')">Modify Order</button>
+											<button id="Previeworder" type=button onclick="goto('reviewOrderDetails')">Review Order</button>
+										</div>
+									</fieldset>
+								</form>
+								<div id="reviewOrderDetails" class="modal">
+
+									<!-- Modal content -->
+									<div class="modal-content"  tabindex="0">
+										<span class="close">&times;</span>
+
+											<legend>Order Review:</legend>
+											<table role="grid">
+													<tr>
+													<th scope="col">Item</th>
+													<th scope="col">Quantity</th>
+													<th scope="col">Price</th>
+													</tr>
+
+													<tr>
+													<td>Paneer Exotica</th>
+													<td>2</td>
+													<td>$ 140</td>
+													</tr>
+
+													<tr>
+													<td>Veg Supreme</th>
+													<td>4</td>
+													<td>$ 240</td>
+													</tr>
+													<tr>
+													<tr>Total</tr>
+													<td></td>
+													<td>$ 380</td>
+													</tr>
+													</table>
+												<button id="Previeworder" type=button onclick="goto('billingForm')">Continue Order</button>
+												<button id="modifyorder" type=button onclick="goto('customizeProduct')">Modify Order</button>
+												</div>
+												</div>
+
+								<form id="billingForm">
+									<fieldset>
+										<legend>Billing address</legend>
+										<div>
+											<label aria-label="Enter your adress line1">Address1
+												<input type="text" id="address1" name="address1" required>
+												</textarea>
+											</label>
+										</div>
+										<div>
+											<label aria-label="Enter your adress line2">Address2
+												<input type="text" id="address2" name="address2" required>
+												</textarea>
+											</label>
+										</div>
+										<div>
+											<label aria-label="Enter your City">City
+												<input type="text" id="city" name="city" required>
+												</textarea>
+											</label>
+										</div>
+										<div>
+											<label aria-label="Enter your state">State
+												<input type="text" id="city" name="state" required>
+												</textarea>
+											</label>
+										</div>
+										<div>
+											<label aria-label="Enter your zipcode">Zip
+												<input type="text" id="zip" name="zip" required>
+												</textarea>
+											</label>
+										</div>
+										<div>
+											<label for="country">Country
+												<input  id="country" name="country" list="country-names" type="text" required>
+												<datalist id="country-names">
+													<option label="USA" value="USA">USA</option>
+													<option label="UK" value="UK"></option>
+													<option label="India" value="India"></option>
+													<option label="Bulgaria" value="Bulgaria"></option>
+													<option label="Japan" value="Japan"></option>
+													<option label="Australia" value="Australia"></option>
+												</datalist>
+											</label>
+										</div>
+									</fieldset>
+
+									<fieldset>
+										<div>
+											<button id="myBtn1" type=button onclick="goto('myModal')">Submit</button>
+										</div>
+									</fieldset>
+								</form>
+
+								<!-- The Modal -->
+								<div id="myModal" class="modal">
+
+									<!-- Modal content -->
+									<div class="modal-content">
+										<span class="close">&times;</span>
+										<p>Order Details</p>
+
+										<div class="overlay">
+
+										</div>
+									</div>
+
+								</div>
+
+								</div>
+								<!-- .entry-content -->
+								<footer class="entry-meta">
+								</footer>
+								<!-- .entry-meta -->
+					</article>
+					<!-- #post-52 -->
+
+					<div id="comments">
+
+
+
+
+					</div>
+					<!-- #comments -->
+
+					</div>
+					<!-- #content -->
+				</div>
+				<!-- #primary -->
+
+			</div>
+			<!-- #main -->
+
+			<!--<footer id="colophon" role="contentinfo">
+
+
+
+			<div id="site-generator">
+												<p>Footer</p>
+			</div>
+	</footer> #colophon -->
+		</div>
+		<!-- #page -->
+
+		</body>
+		<script>
+			// Get the modal
+			var modal = document.getElementById('reviewOrderDetails');
+
+			// Get the button that opens the modal
+			//var btn = document.getElementById("myBtn");
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks the button, open the modal
+			/*btn.onclick = function() {
+				modal.style.display = "block";
+			}*/
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function () {
+				modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function (event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+
+			var goto = function (showSection) {
+				hideAllSections();
+				if (showSection === 'registrationForm') {
+					registrationForm.style.display = "block";
+					document.getElementById('onPageContent').innerHTML = "You are in registration form";
+				}
+				else if (showSection === 'loginForm') {
+					loginForm.style.display = "block";
+					document.getElementById('onPageContent').innerHTML = "You are in Login form. Input your email and passsword to access your account";
+				}
+				else if (showSection === 'productDetails') {
+					productDetails.style.display = "block";
+					document.getElementById('onPageContent').innerHTML = "You are in pizza selection page. Current page listed all the pizzas available to choose";
+				}
+				else if (showSection === 'customizeProduct') {
+					customizeProduct.style.display = "block";
+					document.getElementById('onPageContent').innerHTML = "You are in product customization page.";
+				}
+				else if (showSection === 'reviewOrderDetails') {
+					reviewOrderDetails.style.display = "block";
+					document.getElementById('onPageContent').innerHTML = "You are in review order page. Provide your review order.";
+				}
+				else if (showSection === 'billingForm') {
+					billingForm.style.display = "block";
+					document.getElementById('onPageContent').innerHTML = "You are in billing information page. Provide your billing address information";
+				}
+				else if (showSection === 'myModal') {
+					modal.style.display = "block";
+					document.getElementById('onPageContent').innerHTML = "Order successfully placed";
+				}
+				location.href = "#";
+				document.getElementById('onPageContent').focus();
+			}
+			var registrationForm = document.getElementById('registrationForm');
+			var loginForm = document.getElementById('loginForm');
+			var productDetails = document.getElementById('productDetails');
+			var customizeProduct = document.getElementById('customizeProduct');
+			var reviewOrderDetails = document.getElementById('reviewOrderDetails');
+			var billingForm = document.getElementById('billingForm');
+
+			var hideAllSections = function () {
+				registrationForm.style.display = "none";
+				loginForm.style.display = "none";
+				productDetails.style.display = "none";
+				customizeProduct.style.display = "none";
+				reviewOrderDetails.style.display = "none";
+				billingForm.style.display = "none";
+			}
+			hideAllSections();
+			loginForm.style.display = "block";
+			document.getElementById('onPageContent').innerHTML = "You are in Login form. Input your email and passsword to access your account";
+			document.getElementById('onPageContent').focus();
+		</script>
+
+</html>
