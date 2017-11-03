@@ -2415,12 +2415,25 @@ div.video {
 		margin-right: 0;
 		width: auto;
 	}
+
+	.products{
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.toppings{
+		grid-template-columns: repeat(2, 1fr);	
+	}
 }
 @media (max-width: 800px) {
 	/* the point below which the nav menu starts to wrap with default font size */
 	nav#menu a {
   	font-size: 1em;
   	padding: 0 0.5em;
+	}
+	.products{
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.toppings{
+		grid-template-columns: repeat(2, 1fr);	
 	}
 }
 @media (max-width: 650px) {
@@ -2640,6 +2653,12 @@ div.video {
 		width: 100%;
 		height: auto;
 	}
+	.products{
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.toppings{
+		grid-template-columns: repeat(2, 1fr);	
+	}
 }
 @media (max-width: 450px) {
 	/* the point at which "Terrill Thompson" no longer fits reliably with two 43-pixel buttons */
@@ -2658,6 +2677,12 @@ div.video {
 		left: 10px;
 		top: 10px;
 	}
+	.products{
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.toppings{
+		grid-template-columns: repeat(2, 1fr);	
+	}
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 	body {
@@ -2668,6 +2693,12 @@ div.video {
 	}
 	#branding {
 		border-top: none;
+	}
+	.products{
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.toppings{
+		grid-template-columns: repeat(2, 1fr);	
 	}
 }
 

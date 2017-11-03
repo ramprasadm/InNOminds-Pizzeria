@@ -255,3 +255,16 @@ fieldset label {
     
 }
 
+.toppings{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 100%;
+}
+
+.topping{
+    width:100%;
+    font-size:12px;
+    border: 0px dashed;
+    text-align: center;
+}
+
