@@ -9,8 +9,11 @@ var urlEncodedParser = bodyParser.urlencoded({extended: false});
 var express = require("express");
 var app = express();
 var path = require('path'),
-http = require('http')
-    fs = require('fs');
+
+http = require('http'),
+routes = require('./routes/route'),
+
+fs = require('fs');
 
 /*var express = require('express'),
     routes = require('./routes'),
@@ -28,7 +31,10 @@ var cloudant;
 
 
 var dbCredentials = {
-    dbName: 'my_sample_db'
+
+    dbName: 'my_cloudant1_db'
+
+
 };
 
 var bodyParser = require('body-parser');
@@ -49,6 +55,13 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(methodOverride());
+
+//app.use(require('express-spa-router')(app, express.static(path.join(__dirname, '/views/styles/'))));
+//app.use('/', express.static(path.join(__dirname, '/views/styles')));
+var router = express.Router();
+app.use(router);
+app.use(express.static(__dirname + '/public'));
+
 //app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/style', express.static(path.join(__dirname, '/views/style')));*/
 
@@ -84,32 +97,42 @@ function initDBConnection() {
         // Bluemix service.
         // url will be in this format: https://username:password@xxxxxxxxx-bluemix.cloudant.com
         dbCredentials.url = getDBCredentialsUrl(fs.readFileSync("vcap-local.json", "utf-8"));
-    }
+  }
 
     cloudant = require('cloudant')(dbCredentials.url);
 
     // check if DB exists if not create
     cloudant.db.create(dbCredentials.dbName, function(err, res) {
         if (err) {
+
+        	console.log(err);
             console.log('Could not create new db: ' + dbCredentials.dbName + ', it might already exist.');
         }
+		console.log(res);
+
+
     });
 
     db = cloudant.use(dbCredentials.dbName);
 }
 
 initDBConnection();
-app.get('/', function(req, res){
-    res.render('index.html');
-});
+
+
+router
+.get('/', routes.register);
+
+
 //app.get('/', routes.index);
+// using express for post method
 
 // using express for post method
 app.post("/authPage", urlEncodedParser, function(request, response) {
 	if(request.url!="/favicon.ico") {
 		if(request.body.regOrLogin=="Register") {
-			
+
 var body = request.body;
+
 					var date = new Date();
 					var currentDate = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay();
 			    db.insert({
@@ -117,39 +140,67 @@ var body = request.body;
 		password:body.pwd,
 		dob:body.dob,
 		reg_date:currentDate
-        
+
     },  function(err, doc) {
         if (err) {
             console.log(err);
            return response.sendStatus(500);
-            
+
         } else {
+
+           console.log("user registered", doc);
+		  // response.sendFile( __dirname +"/views/regSuccess.html");
+        }
+         response.render('regSuccess');
+       // response.sendFile(path.join(__dirname, '/views', 'regSuccess.html'));
+		//	response.sendFile( __dirname +"/views/regSuccess.html");
+        //response.end();
+
            console.log("user registered");
         }
 
-        response.sendFile(path.join(__dirname, '/views', 'regSuccess.html'));
+
 			//response.sendFile( __dirname +"/views/regSuccess.html");
-        response.end();
-    });
-			
+       // response.end();
+
+    );
+
 		} else if (request.body.regOrLogin=="Login") {
 			var  body = request.body;
+
+			console.log(body);
+
 			console.log(body.username+": username");
 
 			db.find({selector:{username:body.username}}, function(er, result) {
-  if (er) {
-    throw er;
-  }
+				if (er) {
+					console.log(er);
+                 throw er;
+               }
+			   else{
 
-  console.log('Found %d documents with name Alice', result.docs.length);
-  for (var i = 0; i < result.docs.length; i++) {
-    console.log('  Doc id: %s', result.docs[i]._id);
-  }
+				   console.log(result);
+				   console.log('Found %d documents with name Alice', result.docs.length);
+                   for (var i = 0; i < result.docs.length; i++) {
+				   if(result.docs[i].password === body.pwd){
+                   console.log('  Doc id: %s', result.docs[i]._id);
+				   response.sendFile(path.join(__dirname, '/views', 'authorised.html'));
+				   }
+				   else{
+					   console.log(result);
+					    response.sendFile(path.join(__dirname, '/views', 'unauthorised.html'));
+				   }}
+			   }
+
 });
-			
+
 		}
 	}
 });
+
+
+
+
 
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
     console.log('Express server listening on port ' + app.get('port'));

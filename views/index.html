@@ -1,6 +1,12 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Slab">
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Slab"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/ajax.js">
+</script>
+
+
 <style>
 body {
 	font-family: 'Josefin Slab';
@@ -20,19 +26,20 @@ table {
 }
 </style>
 </head>
-<body>
-<center>
+
+<body >
+<center id = "index">
 <h1>Register</h1>
 <p>Enter your username and password</p>
 <table>
-<form action="/authPage" method="post">
+<form  method="post">
 <tr>
 <td>Username</td>
-<td><input type="text" name="username"/></td>
+<td><input type="text" name="username" id="username"/></td>
 </tr>
 <tr>
 <td>Password</td>
-<td><input type="password" name="pwd"/></td>
+<td><input type="password" name="pwd"  id="pwd"/></td>
 </tr>
 <tr>
 <td>Date of birth:</td>
@@ -41,10 +48,15 @@ table {
 </td>
 </tr>
 <tr>
-<td align="center" colspan="2"><input type="submit"value="Register" name="regOrLogin" class="class1"/></td>
+
+<td align="center" colspan="2"><input type="button"value="Register" id = "register" name="regOrLogin" class="class1"/></td>
 </tr>
 </form>
 </table>
 </center>
-</body>
+
+
+
+</body> 
+
 </html>
