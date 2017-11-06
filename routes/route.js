@@ -10,5 +10,14 @@ exports.unauthorised = function(req, res){
   res.render('unauthorised.html', { title: 'Failure' });
 };
 exports.register = function(req, res){
-  res.render('index.html', { title: 'Registration' });
+  res.render('sample.html', { title: 'Registration' });
 };
+exports.productsPage = function(req, res){
+  res.render('products.html', { title: 'products' });
+};
+
+exports.toppingsPage = function(req, res){
+  res.render('toppings.html', { title: 'Toppings' });
+};
+
+
