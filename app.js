@@ -6,7 +6,8 @@ var bodyParser = require("body-parser");
 var urlEncodedParser = bodyParser.urlencoded({extended: false});
 
 // express
-var express = require("express");
+var express = require("express")
+const compression = require('compression');
 var app = express();
 var path = require('path'),
 
@@ -14,6 +15,11 @@ http = require('http'),
 routes = require('./routes/route'),
 
 fs = require('fs');
+
+var watson = require('watson-developer-cloud');
+var url = require('url');
+var BLUEMIX_USERNAME = 'ee31be26-8168-44e7-95d0-8a20dc70a9da';
+var BLUEMIX_PASSWORD = 'mzAtejCdkmDL';
 
 /*var express = require('express'),
     routes = require('./routes'),
@@ -45,6 +51,7 @@ var multipart = require('connect-multiparty')
 var multipartMiddleware = multipart();
 
 // all environments
+app.use(compression());
 app.set('port', process.env.PORT || 3010);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
@@ -55,6 +62,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(methodOverride());
+app.use('/api/speech-to-text/', require('./js/lib/stt-token.js'));
 
 //app.use(require('express-spa-router')(app, express.static(path.join(__dirname, '/views/styles/'))));
 //app.use('/', express.static(path.join(__dirname, '/views/styles')));
@@ -63,6 +71,7 @@ app.use(router);
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/images'));
+app.use(express.static(__dirname + '/js'));
 //app.use(express.static(path.join(__dirname, '/css/')));
 //app.use('/style', express.static(path.join(__dirname, '/views/style')));*/
 
@@ -237,6 +246,26 @@ app.post("/saveOrder", urlEncodedParser, function(request, response) {
 app.post("/newOrder", urlEncodedParser, function(request, response) {
      response.render('products');
 });
+
+app.get('/api/speak', function(req, res) {
+  var query = url.parse(req.url, true).query;
+
+  var text_to_speech = watson.text_to_speech({
+    username: BLUEMIX_USERNAME,
+    password: BLUEMIX_PASSWORD,
+    version: 'v1',
+    url: 'https://stream.watsonplatform.net/text-to-speech/api'
+  });
+
+  var params = {
+    text: query.text,
+    voice: 'en-US_AllisonVoice', // Optional voice
+    accept: 'audio/wav'
+  };
+
+  text_to_speech.synthesize(params).pipe(res);  
+});
+
 
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
     console.log('Express server listening on port ' + app.get('port'));

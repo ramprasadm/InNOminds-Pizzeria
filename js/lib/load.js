@@ -1,3 +1,8 @@
+// text to speech
+var audio = document.getElementById('audio');
+var wavsource = document.getElementById('wavsource');
+
+// speech to text
 var speech = SpeechToText;
 var activeSTT;
 var value;
@@ -29,6 +34,9 @@ function listen() {
     });
 }
 function setFormValue(locvalue) {
+    audio = document.getElementById('audio');
+    wavsource = document.getElementById('wavsource');
+    
     if (locvalue == null || locvalue == undefined)
         return;
     if (document.activeElement.tagName == "INPUT" && document.activeElement.type == "text") {
@@ -46,6 +54,10 @@ function setFormValue(locvalue) {
     else if (document.activeElement.tagName == "SELECT") {
         setSelectedValue(document.activeElement, locvalue);
     }
+    stopListening();
+    wavsource.src = '/api/speak?text= You just said ' + document.activeElement.value;
+    audio.load();
+    audio.play();
 }
 function startListening() {
     if (activeSTT) {
@@ -63,34 +75,6 @@ function stopListening() {
         activeSTT = null;
     }
 }
-
-function addEventListener(el, eventName, handler) {
-    if (el.addEventListener) {
-        el.addEventListener(eventName, handler);
-    } else {
-        el.attachEvent('on' + eventName, function () {
-            handler.call(el);
-        });
-    }
-}
-
-function addEventListeners(selector, type, handler) {
-    var elements = document.querySelectorAll(selector);
-    for (var i = 0; i < elements.length; i++) {
-        addEventListener(elements[i], type, handler);
-    }
-}
-
-/* addEventListeners('input', 'focus', function (e) {
-     //stopListening();
-     startListening();
- });
-
- addEventListeners('select', 'focus', function (e) {
-     startListening();
- });*/
-
-startListening();
 
 function setSelectedValue(selectObj, valueToSet) {
     for (var i = 0; i < selectObj.options.length; i++) {
@@ -110,4 +94,29 @@ function setCheckedValue(groupName, value) {
     }
     return null;
 }
+
+function addEventListener(el, eventName, handler) {
+    if (el.addEventListener) {
+        el.addEventListener(eventName, handler);
+    } else {
+        el.attachEvent('on' + eventName, function () {
+            handler.call(el);
+        });
+    }
+}
+
+function addEventListeners(selector, type, handler) {
+    var elements = document.querySelectorAll(selector);
+    for (var i = 0; i < elements.length; i++) {
+        addEventListener(elements[i], type, handler);
+    }
+}
+
+addEventListeners('input', 'focus', function (e) {
+     startListening();
+ });
+
+addEventListeners('select', 'focus', function (e) {
+     startListening();
+});
 
