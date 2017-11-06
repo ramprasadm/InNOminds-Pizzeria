@@ -1,10 +1,12 @@
 <form id="productDetails">
     <fieldset>
-        <legend tabindex="1">Pizza Order</legend>
+        <legend >Pizza Order</legend>
         <div class="products">
-            <div class="product" tabindex="1">
+            <div class="product">
+				<div id="product1">
                 <label>
 													<img src="1371006.png" title="Pizza Hut Veggie Supreme Pizza" alt="" />
+													<span style="padding-left: 10px">
 													<div>
 														<strong>Veggie Supreme.</strong>
 													</div>
@@ -20,7 +22,8 @@
 														</span>
 
 													</div>
-													<input id="veggie" type="checkbox" name="pizza1" value="veggie">
+													
+													<input onFocus="onFocus('product1')" onBlur="onBlur('product1')" id="veggie" type="checkbox" name="pizza1" value="veggie">
 
 
 													<span>
@@ -31,12 +34,15 @@
 															<option value="3">3</option>
 														</select>
 													</span>
-
+													</span>
 												</label>
+												</div>
             </div>
-            <div class="product" tabindex="2">
+            <div class="product">
+				<div id="product2">
                 <label>
 													<img src="1371007.png" title=" Hot &amp; Fresh Exotica Italian Veg Pizza " alt="" />
+													<span style="padding-left: 10px">
 													<div>
 														<span>Supreme</span>
 														<strong>Exotica.</strong>
@@ -51,7 +57,7 @@
 														</span>
 
 													</div>
-													<input id="veggie" type="checkbox" name="pizza2" value="exotica">
+													<input onFocus="onFocus('product2')" onBlur="onBlur('product2')" id="veggie" type="checkbox" name="pizza2" value="exotica">
 
 
 													<span>
@@ -62,13 +68,15 @@
 															<option value="3">3</option>
 														</select>
 													</span>
-
+													</span>
 												</label>
             </div>
-
-            <div class="product" tabindex="3">
+			</div>
+            <div class="product">
+				<div id="product3">
                 <label>
 													<img src="1371005.png" title="Paneer Vegorama " alt="" />
+													<span style="padding-left: 10px">
 													<div class="product-name">
 														<span>Supreme</span>
 														<strong>Paneer Vegorama.</strong>
@@ -87,7 +95,7 @@
 														</span>
 
 													</div>
-													<input id="veggie" type="checkbox" name="pizza3" value="Paneer">
+													<input onFocus="onFocus('product3')" onBlur="onBlur('product3')" id="veggie" type="checkbox" name="pizza3" value="Paneer">
 													<span>
 														<select name="quantity">
 															<option>Choose Quantity</option>
@@ -96,12 +104,15 @@
 															<option value="3">3</option>
 														</select>
 													</span>
-
+													</span>
 												</label>
+				</div>
             </div>
-            <div class="product" tabindex="4">
+            <div class="product" >
+				<div id="product4">
                 <label>
 													<img src="1371001.png" title="Tandoori Paneer Pizza" alt="" />
+													<span style="padding-left: 10px">
 													<div class="product-name">
 														<span>Signature</span>
 														<strong>Tandoori Paneer.</strong>
@@ -119,7 +130,7 @@
 														</span>
 
 													</div>
-													<input id="veggie" type="checkbox" name="pizza4" value="PaneerTadoori">
+													<input onFocus="onFocus('product4')" onBlur="onBlur('product4')" id="veggie" type="checkbox" name="pizza4" value="PaneerTadoori">
 													<span>
 														<select name="quantity">
 															<option>Choose Quantity</option>
@@ -128,8 +139,9 @@
 															<option value="3">3</option>
 														</select>
 													</span>
-
+													</span>
 												</label>
+				</div>
             </div>
             <div style="width:100%;float:right;">
                 <button id="savePizzaSelection" type=button >Continue to Toppings</button>
