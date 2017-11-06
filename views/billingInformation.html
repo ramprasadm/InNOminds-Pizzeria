@@ -1,0 +1,54 @@
+<form id="billingForm">
+	<fieldset>
+		<legend>Billing address</legend>
+		<div>
+			<label>Address Line1
+												<input type="text" id="address1" name="address1" required>
+												</textarea>
+											</label>
+		</div>
+		<div>
+			<label>Address Line2
+												<input type="text" id="address2" name="address2" required>
+												</textarea>
+											</label>
+		</div>
+		<div>
+			<label>City
+												<input type="text" id="city" name="city" required>
+												</textarea>
+											</label>
+		</div>
+		<div>
+			<label>State
+												<input type="text" id="city" name="state" required>
+												</textarea>
+											</label>
+		</div>
+		<div>
+			<label>Zip
+												<input type="text" id="zip" name="zip" required>
+												</textarea>
+											</label>
+		</div>
+		<div>
+			<label for="country">Country
+												<input id="country" name="country" list="country-names" type="text" required>
+												<datalist id="country-names">
+													<option label="USA" value="USA">USA</option>
+													<option label="UK" value="UK"></option>
+													<option label="India" value="India"></option>
+													<option label="Bulgaria" value="Bulgaria"></option>
+													<option label="Japan" value="Japan"></option>
+													<option label="Australia" value="Australia"></option>
+												</datalist>
+											</label>
+		</div>
+	</fieldset>
+
+	<fieldset>
+		<div>
+			<button id="saveBilling" type="button">Submit</button>
+		</div>
+	</fieldset>
+</form>

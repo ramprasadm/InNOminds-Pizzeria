@@ -1,0 +1,50 @@
+<form id="registrationForm">
+    <fieldset>
+        <legend aria-label="Customer Registration page. This page captures your Personal Details">
+            <h1 class="entry-title">Registration</h1>
+        </legend>
+        <div>
+            <label aria-label="Enter your first name">First Name
+												<input id="given-name" name="given-name" type="text" placeholder="First name">
+											</label>
+        </div>
+        <div>
+            <label aria-label="Enter your last name">Last Name
+												<input id="family-name" name="family-name" type="text" placeholder="Last name" required>
+											</label>
+        </div>
+        <div>
+            <label aria-label="Enter your Date of Birth in month-date-year">Date of Birth
+												<input id="dob" name="dob" type="date" required>
+											</label>
+        </div>
+        <div>
+            <label aria-label="Select Sex">Sex
+												<select id="sex" name="sex" aria-label="Select Sex">
+													<option selected="selected" value="1">Please choose one…</option>
+													<option value="2">Male</option>
+													<option value="3">Female</option>
+													<option value="4">Other</option>
+												</select>
+											</label>
+        </div>
+        <div>
+            <label aria-label="Enter your email address">Email
+												<input id="email" name="email" type="email" placeholder="example@domain.com" required>
+											</label>
+        </div>
+        <div>
+            <label aria-label="Enter your password">New Password
+												<input id="pwd" name="pwd" type="password" placeholder="password" required>
+											</label>
+        </div>
+        <div>
+            <label aria-label="Enter your phone number">Telephone
+												<input id="phone" name="phone" type="tel" placeholder="Eg. +91 9916 109 951" lable="Enter phone number">
+											</label>
+        </div>
+        <div>
+            <button id="saveRegistration" type="button" >Submit Registration</button>
+        </div>
+    </fieldset>
+</form>
