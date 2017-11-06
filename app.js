@@ -199,9 +199,44 @@ var body = request.body;
 	}
 });
 
+app.post("/goToRegistration", urlEncodedParser, function(request, response) {
+     response.render('registration');
+});
 
+app.post("/saveRegistration", urlEncodedParser, function(request, response) {
+     response.render('login');
+});
 
+app.post("/customerAuthPage", urlEncodedParser, function(request, response) {
+     response.render('products');
+});
 
+app.post("/savePizzaSelection", urlEncodedParser, function(request, response) {
+     response.render('toppings');
+});
+
+app.post("/saveToppings", urlEncodedParser, function(request, response) {
+     response.render('reviewOrder');
+});
+
+app.post("/modifyOrder", urlEncodedParser, function(request, response) {
+     response.render('products');
+});
+
+app.post("/goToBilling", urlEncodedParser, function(request, response) {
+     response.render('billingInformation');
+});
+
+app.post("/saveBilling", urlEncodedParser, function(request, response) {
+     response.render('payment');
+});
+
+app.post("/saveOrder", urlEncodedParser, function(request, response) {
+     response.render('orderSummary');
+});
+app.post("/newOrder", urlEncodedParser, function(request, response) {
+     response.render('products');
+});
 
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
     console.log('Express server listening on port ' + app.get('port'));
