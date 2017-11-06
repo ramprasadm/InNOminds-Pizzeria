@@ -458,7 +458,7 @@ input[type=text], select {
 	padding: 0.15em;
 }
 input#s {
-	background-image: url(images/search.png);
+	background-image: url(search.png);
 	background-repeat: no-repeat;
 	background-position: 5px 6px;
 	-moz-border-radius: 2px;
