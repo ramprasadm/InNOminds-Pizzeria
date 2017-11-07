@@ -84,15 +84,8 @@ function saveBillingInformation() {
             return response.sendStatus(500);
 
         } else {
-
-            console.log("user registered", doc);
-            // response.sendFile( __dirname +"/views/regSuccess.html");
+          console.log("Billing Information Saved", doc);
         }
         response.render('regSuccess');
-        // response.sendFile(path.join(__dirname, '/views', 'regSuccess.html'));
-        //	response.sendFile( __dirname +"/views/regSuccess.html");
-        //response.end();
-
-        console.log("user registered");
-    });
+   });
 }
