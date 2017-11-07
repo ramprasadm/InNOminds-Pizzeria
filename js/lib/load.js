@@ -29,7 +29,7 @@ function listen() {
             setFormValue(value);
             value = null;
             stopListening();
-            startListening();
+            //startListening();
         }
     });
 }
