@@ -48,7 +48,9 @@ $(document).on('click', '#Login', function () {
 
 $(document).on('click', '#customerLogin', function () {
   var myusername = {};
-  $.ajax({
+  logincustomerId = '1234';
+  if(productsSelected == false){
+    $.ajax({
     type: "Post",
     url: "customerAuthPage",
     data: myusername,
@@ -61,6 +63,23 @@ $(document).on('click', '#customerLogin', function () {
       console.log(err);
     }
   })
+}
+else {
+  $.ajax({
+    type: "Post",
+    url: "customerAuthPageProceedOrder",
+    data: myusername,
+    success: function (data) {
+      $("#pageContent").html(data);
+      //document.getElementById('onPageContent').innerHTML = "You are in pizza selection page. Current page listed all the pizzas available to choose";
+      console.log(data);
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  })
+}
+  
 });
 $(document).on('click', '#savePizzaSelection', function () {
   var myusername = {};
@@ -115,21 +134,6 @@ $(document).on('click', '#modifyOrder', function () {
   $.ajax({
     type: "Post",
     url: "modifyOrder",
-    data: myusername,
-    success: function (data) {
-      $("#pageContent").html(data);
-      console.log(data);
-    },
-    error: function (err) {
-      console.log(err);
-    }
-  });
-});
-$(document).on('click', '#goToBilling', function () {
-  var myusername = {};
-  $.ajax({
-    type: "Post",
-    url: "goToBilling",
     data: myusername,
     success: function (data) {
       $("#pageContent").html(data);
@@ -200,4 +204,36 @@ $(document).on('click', '#newOrder', function () {
       console.log(err);
     }
   })
+});
+
+$(document).on('click', '#goToBilling', function () {
+  productsSelected = true;
+  if(logincustomerId == null){
+    $.ajax({
+        type: "Post",
+        url: "goToLogin",
+        data: {},
+        success: function (data) {
+          $("#pageContent").html(data);
+          console.log(data);
+        },
+        error: function (err) {
+          console.log(err);
+        }
+      })
+  }
+  else{
+    $.ajax({
+        type: "Post",
+        url: "goToBilling",
+        data: {},
+        success: function (data) {
+          $("#pageContent").html(data);
+          console.log(data);
+        },
+        error: function (err) {
+          console.log(err);
+        }
+      })
+  }
 });
