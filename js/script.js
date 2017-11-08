@@ -92,6 +92,8 @@ function saveBillingInformation() {
 
 var selectedPizzas = [];
 var selectedToppings = [];
+var productsSelected = false;
+var logincustomerId = null;
 
 function addRemovePizza(pizzaDetails){
     var checked = document.getElementById(pizzaDetails.checkboxid).checked;
@@ -178,4 +180,20 @@ function loadPendingOrders(){
     }
     tr += "<tr><td>Total</td><td></td><td></td><td style='align:right;'>"+total+"</td></tr>"
     document.getElementById("pendingorders").innerHTML = tr;
+}
+
+function goToProducts(){
+    $.ajax({
+    type: "Post",
+    url: "goToProducts",
+    data: {},
+    success: function (data) {
+      $("#pageContent").html(data);
+      document.getElementById('onPageContent').innerHTML = "You are in pizza selection page. Current page listed all the pizzas available to choose";
+      console.log(data);
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  })
 }
