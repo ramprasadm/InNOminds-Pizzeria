@@ -232,6 +232,10 @@ app.post("/modifyOrder", urlEncodedParser, function(request, response) {
      response.render('products');
 });
 
+app.post("/customerAuthPageProceedOrder", urlEncodedParser, function(request, response) {
+     response.render('billingInformation');
+});
+
 app.post("/goToBilling", urlEncodedParser, function(request, response) {
      response.render('billingInformation');
 });
@@ -245,6 +249,14 @@ app.post("/saveOrder", urlEncodedParser, function(request, response) {
 });
 app.post("/newOrder", urlEncodedParser, function(request, response) {
      response.render('products');
+});
+
+app.post("/goToProducts", urlEncodedParser, function(request, response) {
+     response.render('products');
+});
+
+app.post("/goToLogin", urlEncodedParser, function(request, response) {
+     response.render('login');
 });
 
 app.get('/api/speak', function(req, res) {
@@ -265,7 +277,6 @@ app.get('/api/speak', function(req, res) {
 
   text_to_speech.synthesize(params).pipe(res);  
 });
-
 
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
     console.log('Express server listening on port ' + app.get('port'));
