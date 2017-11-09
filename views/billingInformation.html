@@ -53,5 +53,15 @@
 	</fieldset>
 </form>
 <script>
-	loadBillingInformation();
+	var data= {
+		address1: "<%=address1%>",
+		address2: "<%=address2%>",
+		country: "<%=country%>",
+		zip: "<%=zip%>",
+		state: "<%=state%>",
+		street: "<%=street%>",
+		city: "<%=city%>",
+	}
+	console.log("billing address*******************",data);
+	loadBillingInformation(data);
 </script>
