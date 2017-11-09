@@ -1,11 +1,11 @@
-<form id="registrationForm">
+<form id="registrationForm" action="javascript:void(0)" method="post">
     <fieldset>
         <legend aria-label="Customer Registration page. This page captures your Personal Details">
             <h1 class="entry-title">Registration</h1>
         </legend>
         <div>
             <label aria-label="Enter your first name">First Name
-												<input id="given-name" name="given-name" type="text" placeholder="First name">
+												<input id="given-name" name="given-name" type="text" placeholder="First name" required>
 											</label>
         </div>
         <div>
@@ -20,8 +20,8 @@
         </div>
         <div>
             <label aria-label="Select Sex">Sex
-												<select id="sex" name="sex" aria-label="Select Sex">
-													<option selected="selected" value="1">Please choose one…</option>
+												<select id="sex" name="sex" aria-label="Select Sex" required>
+													<option selected="selected" value="">Please choose one…</option>
 													<option value="2">Male</option>
 													<option value="3">Female</option>
 													<option value="4">Other</option>
@@ -44,7 +44,7 @@
 											</label>
         </div>
         <div>
-            <button id="saveRegistration" type="button" >Submit Registration</button>
+            <button id="saveRegistration" type="submit" >Submit Registration</button>
         </div>
     </fieldset>
 </form>

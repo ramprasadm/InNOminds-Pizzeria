@@ -46,7 +46,7 @@ $(document).on('click', '#Login', function () {
   });
 });
 
-$(document).on('click', '#customerLogin', function () {
+$(document).on('submit', '#loginForm', function () {
   var username = document.getElementById("userEmail").value;
   var pwd = document.getElementById("passowrd").value;
   console.log(username, pwd);
@@ -178,7 +178,7 @@ $(document).on('submit', '#billingForm', function () {
     }
   });
 });
-$(document).on('click', '#saveRegistration', function () {
+$(document).on('submit', '#registrationForm', function () {
    var username = document.getElementById("given-name").value;
   var pwd = document.getElementById("pwd").value;
   var lastname = document.getElementById("family-name").value;
