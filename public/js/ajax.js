@@ -47,8 +47,13 @@ $(document).on('click', '#Login', function () {
 });
 
 $(document).on('click', '#customerLogin', function () {
-  var myusername = {};
-  logincustomerId = '1234';
+  var username = document.getElementById("userEmail").value;
+  var pwd = document.getElementById("passowrd").value;
+  console.log(username, pwd);
+  var myusername = {
+    username: username,
+    pwd: pwd   
+  }
   if(productsSelected == false){
     $.ajax({
     type: "Post",
@@ -161,7 +166,23 @@ $(document).on('click', '#saveBilling', function () {
   });
 });
 $(document).on('click', '#saveRegistration', function () {
-  var myusername = {};
+   var username = document.getElementById("given-name").value;
+  var pwd = document.getElementById("pwd").value;
+  var lastname = document.getElementById("family-name").value;
+  var dob = document.getElementById("dob").value;
+  var sex = document.getElementById("sex").value;
+  var email = document.getElementById("email").value;
+  var phone = document.getElementById("phone").value;
+  
+  var myusername = {
+    username:username,
+	pwd:pwd,
+	lastname:lastname,
+	dob:dob,
+	sex:sex,
+	email:email,
+	phone:phone   
+  }
   $.ajax({
     type: "Post",
     url: "saveRegistration",
