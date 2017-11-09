@@ -290,14 +290,13 @@ app.post("/customerAuthPageProceedOrder", urlEncodedParser, function(request, re
 });
 
 app.post("/goToBilling", urlEncodedParser, function(request, response) {
-    db.find({selector:{customerId:"32b943a356392d2b29da40a5e2b20a27",name:"address"}}, function(er, result) {
+    db.find({selector:{customerId:request.body.customerId,name:"address"}}, function(er, result) {
         if (er) {
             console.log(er);
          throw er;
        }
        else{
         //response.send(result.docs);
-        console.log("billingInformation:::::::%s",result.docs[0].address1);
         response.render('billingInformation',{
             address1:result.docs[0].address1,
             address2:result.docs[0].address2,
@@ -316,26 +315,24 @@ app.post("/saveBilling", urlEncodedParser, function (request, response) {
     var body = request.body;
     db.insert({
         name: "order",
-        customerId: "32b943a356392d2b29da40a5e2b20a27",
+        customerId: body.customerId,
         selectedPizzas: body.selectedPizzas,
         selectedToppings: body.selectedToppings
     },{
         name: 'address',
-        customerId: "32b943a356392d2b29da40a5e2b20a27",
+        customerId: body.customerId,
         address1: body.address.address1,
         address2: body.address.address2,
         state: body.address.state,
         country: body.address.country,
         zip: body.address.zip,
         city: body.address.city,
-        _id: '1b869da7793aed60c98bf5af085e0bd7'
     }, function (err, doc) {
         if (err) {
             console.log(err);
             return response.sendStatus(500);
 
         } else {
-            console.log("Order and billing Saved::::", doc);
             response.render('payment');  
         }
     });

@@ -149,7 +149,7 @@ $(document).on('click', '#saveBilling', function () {
   for(var i = 0; i < selectedToppings.length; i++) {
     delete selectedToppings[i]['checkboxid'];
   }
-  
+  data.customerId = logincustomerId;
   data.selectedPizzas = selectedPizzas;
   data.selectedToppings = selectedToppings;
   data.address = {};
@@ -257,7 +257,7 @@ $(document).on('click', '#goToBilling', function () {
     $.ajax({
         type: "Post",
         url: "goToBilling",
-        data: {},
+        data: {customerId:logincustomerId},
         success: function (data) {
           $("#pageContent").html(data);
           //console.log(data);
