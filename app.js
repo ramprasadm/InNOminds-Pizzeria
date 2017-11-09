@@ -43,6 +43,8 @@ var dbCredentials = {
 
 };
 
+
+
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var logger = require('morgan');
@@ -287,11 +289,50 @@ app.post("/customerAuthPageProceedOrder", urlEncodedParser, function(request, re
 });
 
 app.post("/goToBilling", urlEncodedParser, function(request, response) {
-     response.render('billingInformation');
+    db.find({selector:{customerId:"32b943a356392d2b29da40a5e2b20a27",name:"address"}}, function(er, result) {
+        if (er) {
+            console.log(er);
+         throw er;
+       }
+       else{
+        //response.send(result.docs);
+        console.log("billingInformation:::::::%s",result.docs[0].address1);
+        response.render('billingInformation',{
+            address1:result.docs[0].address1,
+            address2:result.docs[0].address2,
+            street:result.docs[0].street,
+            state:result.docs[0].state,
+            country:result.docs[0].country,
+            zip:result.docs[0].zip,
+            city:result.docs[0].city,
+        });
+       }
+   
+    });
 });
 
 app.post("/saveBilling", urlEncodedParser, function(request, response) {
-     response.render('payment');
+  var body = request.body;
+	db.insert({
+        name:'address',
+        customerId: "32b943a356392d2b29da40a5e2b20a27",
+        address1: body.address1,
+		address2: body.address2,
+        state: body.state,
+        country: body.country,
+        zip: body.zip,
+        city: body.city
+    }, function (err, doc) {
+        if (err) {
+            console.log(err);
+            return response.sendStatus(500);
+
+        } else {
+          console.log("Billing Information Saved::::", doc);
+        }
+         response.render('payment');
+   });
+    
 });
 
 app.post("/saveOrder", urlEncodedParser, function(request, response) {
