@@ -160,3 +160,19 @@ function goToProducts(){
     }
   })
 }
+
+function goToBilling(){
+    $.ajax({
+    type: "Post",
+    url: "goToBilling",
+    data: {},
+    success: function (data) {
+      $("#pageContent").html(data);
+      document.getElementById('onPageContent').innerHTML = "You are in pizza selection page. Current page listed all the pizzas available to choose";
+      console.log(data);
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  })
+}

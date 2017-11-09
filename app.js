@@ -258,7 +258,8 @@ app.post("/customerAuthPage", urlEncodedParser, function(request, response) {
                      for (var i = 0; i < result.docs.length; i++) {
 						if(result.docs[i].password === body.pwd){
 							console.log('  Doc id: %s', result.docs[i]._id);
-							response.render('products');
+                            //response.render('products');
+                            response.send({customerId:result.docs[i]._id});
 						}
 						else{
 							console.log(result);

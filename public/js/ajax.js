@@ -54,36 +54,25 @@ $(document).on('click', '#customerLogin', function () {
     username: username,
     pwd: pwd   
   }
-  if(productsSelected == false){
     $.ajax({
     type: "Post",
     url: "customerAuthPage",
     data: myusername,
     success: function (data) {
-      $("#pageContent").html(data);
-      document.getElementById('onPageContent').innerHTML = "You are in pizza selection page. Current page listed all the pizzas available to choose";
-      console.log(data);
+      logincustomerId = data.customerId;
+      if(productsSelected == false){
+        goToProducts();
+      }
+      else{
+        goToBilling();
+      }
+      
     },
     error: function (err) {
       console.log(err);
     }
   })
-}
-else {
-  $.ajax({
-    type: "Post",
-    url: "customerAuthPageProceedOrder",
-    data: myusername,
-    success: function (data) {
-      $("#pageContent").html(data);
-      //document.getElementById('onPageContent').innerHTML = "You are in pizza selection page. Current page listed all the pizzas available to choose";
-      console.log(data);
-    },
-    error: function (err) {
-      console.log(err);
-    }
-  })
-}
+
   
 });
 $(document).on('click', '#savePizzaSelection', function () {
