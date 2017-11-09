@@ -1,4 +1,4 @@
-<form id="billingForm">
+<form id="billingForm" action="javascript:void(0);" method="post">
 	<fieldset>
 		<legend>Billing address</legend>
 		<div>
@@ -48,7 +48,7 @@
 
 	<fieldset>
 		<div>
-			<button id="saveBilling" type="button">Submit</button>
+			<button id="saveBilling" type="submit">Submit</button>
 		</div>
 	</fieldset>
 </form>
@@ -61,6 +61,7 @@
 		state: "<%=state%>",
 		street: "<%=street%>",
 		city: "<%=city%>",
+		id:"<%=id%>"
 	}
 	console.log("billing address*******************",data);
 	loadBillingInformation(data);

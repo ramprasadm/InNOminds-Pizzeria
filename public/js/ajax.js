@@ -141,7 +141,7 @@ $(document).on('click', '#modifyOrder', function () {
   });
 });
 
-$(document).on('click', '#saveBilling', function () {
+$(document).on('submit', '#billingForm', function () {
 
   var data = {};
   for(var i = 0; i < selectedPizzas.length; i++) {
@@ -161,7 +161,7 @@ $(document).on('click', '#saveBilling', function () {
   data.address.state = document.getElementById("state").value;
   data.address.country = document.getElementById("country").value;
   data.address.zip = document.getElementById("zip").value;
-
+  data.address.id = addressId;
   $.ajax({
     type: "Post",
     url: "saveBilling",

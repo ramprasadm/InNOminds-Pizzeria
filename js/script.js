@@ -45,6 +45,7 @@ function setCheckedValue(groupName, value) {
 }
 
 function loadBillingInformation(data) {
+    addressId = data.id;
     setFormElementValue("address1", data.address1);
     setFormElementValue("address2", data.address2);
     setFormElementValue("city", data.city);
@@ -57,6 +58,7 @@ var selectedPizzas = [];
 var selectedToppings = [];
 var productsSelected = false;
 var logincustomerId = null;
+var addressId = null;
 
 function addRemovePizza(pizzaDetails){
     var checked = document.getElementById(pizzaDetails.checkboxid).checked;

@@ -298,6 +298,7 @@ app.post("/goToBilling", urlEncodedParser, function(request, response) {
        else{
         //response.send(result.docs);
         response.render('billingInformation',{
+            id:result.docs[0]._id,
             address1:result.docs[0].address1,
             address2:result.docs[0].address2,
             street:result.docs[0].street,
@@ -313,6 +314,7 @@ app.post("/goToBilling", urlEncodedParser, function(request, response) {
 
 app.post("/saveBilling", urlEncodedParser, function (request, response) {
     var body = request.body;
+    console.log("addressid::::::::::::%s",body.address.id);
     db.insert({
         name: "order",
         customerId: body.customerId,
@@ -327,6 +329,7 @@ app.post("/saveBilling", urlEncodedParser, function (request, response) {
         country: body.address.country,
         zip: body.address.zip,
         city: body.address.city,
+        _id:body.address.id
     }, function (err, doc) {
         if (err) {
             console.log(err);
