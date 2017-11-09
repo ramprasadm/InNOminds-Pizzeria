@@ -14,7 +14,7 @@ $(document).on('click', '#register', function () {
     data: myusername,
     success: function (data) {
       $("body").html(data);
-      console.log(data);
+      //console.log(data);
     },
     error: function (err) {
       console.log(err);
@@ -38,7 +38,7 @@ $(document).on('click', '#Login', function () {
     data: myusername,
     success: function (data) {
       $("body").html(data);
-      console.log(data);
+      //console.log(data);
     },
     error: function (err) {
       console.log(err);
@@ -83,7 +83,7 @@ $(document).on('click', '#savePizzaSelection', function () {
     data: myusername,
     success: function (data) {
       $("#pageContent").html(data);
-      console.log(data);
+      //console.log(data);
     },
     error: function (err) {
       console.log(err);
@@ -100,7 +100,7 @@ $(document).on('click', '#registration', function () {
     success: function (data) {
       $("#pageContent").html(data);
       document.getElementById('onPageContent').innerHTML = "You are in registration form";
-      console.log(data);
+      //console.log(data);
     },
     error: function (err) {
       console.log(err);
@@ -116,7 +116,7 @@ $(document).on('click', '#saveToppings', function () {
     data: myusername,
     success: function (data) {
       $("#pageContent").html(data);
-      console.log(data);
+      //console.log(data);
     },
     error: function (err) {
       console.log(err);
@@ -131,7 +131,7 @@ $(document).on('click', '#modifyOrder', function () {
     data: myusername,
     success: function (data) {
       $("#pageContent").html(data);
-      console.log(data);
+      //console.log(data);
     },
     error: function (err) {
       console.log(err);
@@ -140,14 +140,35 @@ $(document).on('click', '#modifyOrder', function () {
 });
 
 $(document).on('click', '#saveBilling', function () {
-  var myusername = {};
+
+  var data = {};
+  for(var i = 0; i < selectedPizzas.length; i++) {
+    delete selectedPizzas[i]['checkboxid'];
+    delete selectedPizzas[i]['quantityid'];
+  }
+  for(var i = 0; i < selectedToppings.length; i++) {
+    delete selectedToppings[i]['checkboxid'];
+  }
+  
+  data.selectedPizzas = selectedPizzas;
+  data.selectedToppings = selectedToppings;
+  data.address = {};
+  data.address.address1 = document.getElementById("address1").value;
+  data.address.address2 = document.getElementById("address2").value;
+  data.address.city = document.getElementById("city").value;
+  data.address.state = document.getElementById("state").value;
+  data.address.country = document.getElementById("country").value;
+  data.address.zip = document.getElementById("zip").value;
+
   $.ajax({
     type: "Post",
     url: "saveBilling",
-    data: myusername,
+    data: data,
     success: function (data) {
       $("#pageContent").html(data);
-      console.log(data);
+      selectedPizzas = [];
+      selectedToppings = [];
+      //console.log(data);
     },
     error: function (err) {
       console.log(err);
@@ -178,7 +199,7 @@ $(document).on('click', '#saveRegistration', function () {
     data: myusername,
     success: function (data) {
       $("#pageContent").html(data);
-      console.log(data);
+      //console.log(data);
     },
     error: function (err) {
       console.log(err);
@@ -193,7 +214,7 @@ $(document).on('click', '#saveOrder', function () {
     data: myusername,
     success: function (data) {
       $("#pageContent").html(data);
-      console.log(data);
+      //console.log(data);
     },
     error: function (err) {
       console.log(err);
@@ -208,7 +229,7 @@ $(document).on('click', '#newOrder', function () {
     data: myusername,
     success: function (data) {
       $("#pageContent").html(data);
-      console.log(data);
+      //console.log(data);
     },
     error: function (err) {
       console.log(err);
@@ -225,7 +246,7 @@ $(document).on('click', '#goToBilling', function () {
         data: {},
         success: function (data) {
           $("#pageContent").html(data);
-          console.log(data);
+          //console.log(data);
         },
         error: function (err) {
           console.log(err);
@@ -239,7 +260,7 @@ $(document).on('click', '#goToBilling', function () {
         data: {},
         success: function (data) {
           $("#pageContent").html(data);
-          console.log(data);
+          //console.log(data);
         },
         error: function (err) {
           console.log(err);

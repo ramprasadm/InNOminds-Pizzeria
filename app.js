@@ -312,28 +312,33 @@ app.post("/goToBilling", urlEncodedParser, function(request, response) {
     });
 });
 
-app.post("/saveBilling", urlEncodedParser, function(request, response) {
-  var body = request.body;
-	db.insert({
-        name:'address',
+app.post("/saveBilling", urlEncodedParser, function (request, response) {
+    var body = request.body;
+    db.insert({
+        name: "order",
         customerId: "32b943a356392d2b29da40a5e2b20a27",
-        address1: body.address1,
-		address2: body.address2,
-        state: body.state,
-        country: body.country,
-        zip: body.zip,
-        city: body.city
+        selectedPizzas: body.selectedPizzas,
+        selectedToppings: body.selectedToppings
+    },{
+        name: 'address',
+        customerId: "32b943a356392d2b29da40a5e2b20a27",
+        address1: body.address.address1,
+        address2: body.address.address2,
+        state: body.address.state,
+        country: body.address.country,
+        zip: body.address.zip,
+        city: body.address.city,
+        _id: '1b869da7793aed60c98bf5af085e0bd7'
     }, function (err, doc) {
         if (err) {
             console.log(err);
             return response.sendStatus(500);
 
         } else {
-          console.log("Billing Information Saved::::", doc);
+            console.log("Order and billing Saved::::", doc);
+            response.render('payment');  
         }
-         response.render('payment');
-   });
-    
+    });
 });
 
 app.post("/saveOrder", urlEncodedParser, function(request, response) {
