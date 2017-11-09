@@ -213,11 +213,61 @@ app.post("/goToRegistration", urlEncodedParser, function(request, response) {
 });
 
 app.post("/saveRegistration", urlEncodedParser, function(request, response) {
-     response.render('login');
+     var body = request.body;
+	db.insert({
+        username: body.username,
+		password:body.pwd,
+		lastname:body.lastname,
+		dob:body.dob,
+		sex:body.sex,
+		email:body.email,
+		phone:body.phone
+
+    },function(err, doc) {
+        if (err) {
+            console.log(err);
+           return response.sendStatus(500);
+
+        } else {
+           console.log("user registered", doc);	  
+        }
+        response.render('login');
+         console.log("user registered");
+        }
+
+    );
 });
 
 app.post("/customerAuthPage", urlEncodedParser, function(request, response) {
-     response.render('products');
+     var  body = request.body;
+
+			console.log(body);
+
+			console.log(body.username+": username");
+
+			db.find({selector:{email:body.username}}, function(er, result) {
+				if (er) {
+					console.log(er);
+                 throw er;
+                }
+			   else{
+				   console.log(result);
+				   console.log('Found %d documents with name Alice', result.docs.length);
+                     for (var i = 0; i < result.docs.length; i++) {
+						if(result.docs[i].password === body.pwd){
+							console.log('  Doc id: %s', result.docs[i]._id);
+							response.render('products');
+						}
+						else{
+							console.log(result);
+							response.send('Sorry, you\'re not logged in correctly.please try to login again');
+							response.render('login');
+							//response.sendFile(path.join(__dirname, '/views', 'unauthorised.html'));
+						}
+				   }
+			   }
+		});
+			
 });
 
 app.post("/savePizzaSelection", urlEncodedParser, function(request, response) {
