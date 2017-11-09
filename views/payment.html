@@ -1,8 +1,12 @@
 <form id="paymentDetails">
     <fieldset>
         <legend tabindex="1">Payment Details</legend>
+        <span><input type="radio" name="payoption" id="wallet1"><label for="wallet1">Wallet 1</label></span>
+        <span><input type="radio" name="payoption" id="wallet2"><label for="wallet2">Wallet 2</label></span>
+        <span><input type="radio" name="payoption" id="wallet3"><label for="wallet3">Wallet 3</label></span>
         <div style="width:100%;float:right;">
-                <button id="saveOrder" type=button >Place Order</button>
+            <button id="cancelOrder" type=button >Cancel Order</button>
+            <button id="saveOrder" type=button >Proceed to Pay</button>
         </div>
     </fieldset>
 </form>

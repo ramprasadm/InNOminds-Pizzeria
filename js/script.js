@@ -153,7 +153,7 @@ function goToProducts(){
     success: function (data) {
       $("#pageContent").html(data);
       document.getElementById('onPageContent').innerHTML = "You are in pizza selection page. Current page listed all the pizzas available to choose";
-      console.log(data);
+      document.getElementById('onPageContent').focus();
     },
     error: function (err) {
       console.log(err);
@@ -168,8 +168,8 @@ function goToBilling(){
     data: {},
     success: function (data) {
       $("#pageContent").html(data);
-      document.getElementById('onPageContent').innerHTML = "You are in pizza selection page. Current page listed all the pizzas available to choose";
-      console.log(data);
+      document.getElementById('onPageContent').innerHTML = "You are in billing address page. Provide your billing address to deliver";
+      document.getElementById('onPageContent').focus();
     },
     error: function (err) {
       console.log(err);

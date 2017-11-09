@@ -83,7 +83,8 @@ $(document).on('click', '#savePizzaSelection', function () {
     data: myusername,
     success: function (data) {
       $("#pageContent").html(data);
-      //console.log(data);
+      document.getElementById('onPageContent').innerHTML = "You are in toppings selection page. Choose your toppings from available list";
+      document.getElementById('onPageContent').focus();
     },
     error: function (err) {
       console.log(err);
@@ -131,7 +132,8 @@ $(document).on('click', '#modifyOrder', function () {
     data: myusername,
     success: function (data) {
       $("#pageContent").html(data);
-      //console.log(data);
+      document.getElementById('onPageContent').innerHTML = "You are in order modification page. You can modify pizza selection";
+      document.getElementById('onPageContent').focus();
     },
     error: function (err) {
       console.log(err);
@@ -168,7 +170,8 @@ $(document).on('click', '#saveBilling', function () {
       $("#pageContent").html(data);
       selectedPizzas = [];
       selectedToppings = [];
-      //console.log(data);
+      document.getElementById('onPageContent').innerHTML = "You are in payment page. Choose your payment option";
+      document.getElementById('onPageContent').focus();
     },
     error: function (err) {
       console.log(err);
@@ -254,17 +257,6 @@ $(document).on('click', '#goToBilling', function () {
       })
   }
   else{
-    $.ajax({
-        type: "Post",
-        url: "goToBilling",
-        data: {customerId:logincustomerId},
-        success: function (data) {
-          $("#pageContent").html(data);
-          //console.log(data);
-        },
-        error: function (err) {
-          console.log(err);
-        }
-      })
+    goToBilling();
   }
 });

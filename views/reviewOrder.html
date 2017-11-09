@@ -4,8 +4,8 @@
     <div tabindex="0">
     
 
-        <legend>Order Review:</legend>
-        <table role="grid">
+        <legend>Order Review:
+        <table >
             <tr>
                 <th scope="col">Item</th>
                 <th scope="col">Quantity</th>
@@ -16,9 +16,10 @@
             <tbody id="pendingorders">
             </tbody>
         </table>
-        <button id="modifyOrder" type="button" >Modify Order</button>
-        <button id="goToBilling" type="button" >Continue Order</button>
+    </legend>
     </div>
+    <button id="modifyOrder" type="button" >Modify Order</button>
+    <button id="goToBilling" type="button" >Continue Order</button>
 </div>
 <script>
     loadPendingOrders();
