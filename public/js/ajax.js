@@ -117,13 +117,15 @@ $(document).on('click', '#saveToppings', function () {
     data: myusername,
     success: function (data) {
       $("#pageContent").html(data);
-      //console.log(data);
+      document.getElementById('onPageContent').innerHTML = "You are in review order page. Review your order before proceed to payment.";
+      document.getElementById('onPageContent').focus();
     },
     error: function (err) {
       console.log(err);
     }
   });
 });
+
 $(document).on('click', '#modifyOrder', function () {
   var myusername = {};
   $.ajax({
@@ -260,3 +262,28 @@ $(document).on('click', '#goToBilling', function () {
     goToBilling();
   }
 });
+
+$(document).on('click', '#proceedToPay', function () {
+  document.getElementById("otpModal").style.display="block";
+});
+$(document).on('click', '#cancelOrder', function () {
+  document.getElementById("popupcontent").innerHTML = "Order cancelled.";
+  document.getElementById("onPageContent").innerHTML = "Order cancelled";
+  document.getElementById("onPageContent").focus();
+});
+$(document).on('click', '#cancelotp', function () {
+  document.getElementById("modalContent").innerHTML = "Payment Failed.";
+  document.getElementById("onPageContent").innerHTML = "Payment Failed.";
+  document.getElementById("onPageContent").focus();
+});
+$(document).on('click', '#submitotp', function () {
+  document.getElementById("modalContent").innerHTML = "Payment Successful. Order successfully placed";
+  document.getElementById("onPageContent").innerHTML = "Payment Successful. Order successfully placed";
+  document.getElementById("onPageContent").focus();
+});
+
+$(document).on('click', '#closepopup', function () {
+  document.getElementById('myModal').style.display="none";
+  goToProducts();
+});
+
