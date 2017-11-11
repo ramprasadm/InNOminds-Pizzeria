@@ -152,6 +152,11 @@ function loadOrdersTable(orders) {
     var selectedToppings = [];
     var tr = "";
     var total = 0;
+    if (orders.length == 0)
+    {
+        document.getElementById("noorders").innerHTML = "You don't have any orders";
+    }
+
     for (order in orders) {
         selectedPizzas = orders[order].selectedPizzas == undefined ? [] : orders[order].selectedPizzas;
         selectedToppings = orders[order].selectedToppings == undefined ? [] : orders[order].selectedToppings ;
