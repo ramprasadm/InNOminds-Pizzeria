@@ -1,0 +1,12 @@
+<form id="orders">
+    <fieldset>
+        <legend tabindex="1">My Orders</legend>
+        <div style="width:100%;float:right;" id="ordersTable">
+
+        </div>
+    </fieldset>
+</form>
+<script>
+    var orders = JSON.parse('<%-JSON.stringify(orders)%>');
+    loadOrdersTable(orders);
+</script>

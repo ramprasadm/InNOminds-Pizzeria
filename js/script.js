@@ -147,6 +147,39 @@ function loadPendingOrders(){
     document.getElementById("pendingorders").innerHTML = tr;
 }
 
+function loadOrdersTable(orders) {
+    var selectedPizzas = [];
+    var selectedToppings = [];
+    var tr = "";
+    var total = 0;
+    for (order in orders) {
+        selectedPizzas = orders[order].selectedPizzas == undefined ? [] : orders[order].selectedPizzas;
+        selectedToppings = orders[order].selectedToppings == undefined ? [] : orders[order].selectedToppings ;
+        tr+="<table>";
+        tr+='<tr><th scope="col">Item</th><th scope="col">Quantity</th><th scope="col">unit Price</th><th scope="col">Total Price</th></tr>';
+        tr+="<tbody>"
+        for (i = 0; i < selectedPizzas.length; i++) {
+            tr += "<tr><td>" + selectedPizzas[i].name + "</td>";
+            tr += "<td>" + selectedPizzas[i].quantity + "</td>";
+            tr += "<td style='align:right;'>" + selectedPizzas[i].price + "</td>";
+            tr += "<td style='align:right;'>" + (selectedPizzas[i].quantity * selectedPizzas[i].price) + "</td></tr>";
+            total += parseInt(selectedPizzas[i].quantity * selectedPizzas[i].price);
+        }
+        for (i = 0; i < selectedToppings.length; i++) {
+            tr += "<tr><td>" + selectedToppings[i].name + "</td>";
+            tr += "<td></td>";
+            tr += "<td style='align:right;'>" + selectedToppings[i].price + "</td>";
+            tr += "<td style='align:right;'>" + selectedToppings[i].price + "</td></tr>";
+            total += parseInt(selectedToppings[i].price);
+        }
+        tr += "<tr><td>Total</td><td></td><td></td><td style='align:right;'>" + total + "</td></tr></tbody>"
+        tr+="</table><br>";
+    }
+    
+    document.getElementById("ordersTable").innerHTML = tr;
+}
+
+
 function goToProducts(){
     $.ajax({
     type: "Post",
@@ -172,6 +205,20 @@ function goToBilling(){
       $("#pageContent").html(data);
       document.getElementById('onPageContent').innerHTML = "You are in billing address page. Provide your billing address to deliver";
       document.getElementById('onPageContent').focus();
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  })
+}
+
+function goToOrders(){
+    $.ajax({
+    type: "Post",
+    url: "goToOrders",
+    data: {customerId:logincustomerId},
+    success: function (data) {
+      $("#pageContent").html(data);
     },
     error: function (err) {
       console.log(err);

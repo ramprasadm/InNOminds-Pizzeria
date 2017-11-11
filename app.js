@@ -288,6 +288,21 @@ app.post("/modifyOrder", urlEncodedParser, function(request, response) {
 app.post("/customerAuthPageProceedOrder", urlEncodedParser, function(request, response) {
      response.render('billingInformation');
 });
+app.post("/goToOrders", urlEncodedParser, function(request, response) {
+    console.log("go to orders called %s", JSON.stringify(request.body));
+    db.find({selector:{customerId:request.body.customerId,name:"order"}}, function(er, result) {
+        if (er) {
+            console.log(er);
+         throw er;
+       }
+       try{
+            response.render('orders',{orders:result.docs});
+        }catch(err){
+            console.log("error >>>>",err);
+        }
+    });
+    
+});
 
 app.post("/goToBilling", urlEncodedParser, function(request, response) {
     db.find({selector:{customerId:request.body.customerId,name:"address"}}, function(er, result) {
