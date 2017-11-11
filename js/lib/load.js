@@ -39,6 +39,9 @@ function setFormValue(locvalue) {
     
     if (locvalue == null || locvalue == undefined)
         return;
+        
+    locvalue =  locvalue.replace(/ /g, ";").toLowerCase();
+
     if (document.activeElement.tagName == "INPUT" && document.activeElement.type == "text") {
         document.activeElement.value = locvalue;
     } else if (document.activeElement.tagName == "INPUT" && document.activeElement.type == "password") {
