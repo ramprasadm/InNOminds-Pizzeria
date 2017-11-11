@@ -60,6 +60,7 @@ $(document).on('submit', '#loginForm', function () {
     data: myusername,
     success: function (data) {
       logincustomerId = data.customerId;
+      document.getElementById("menu-item-59").style.display = "block";
       if(productsSelected == false){
         goToProducts();
       }

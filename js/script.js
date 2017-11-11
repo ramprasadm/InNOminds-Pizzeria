@@ -152,9 +152,10 @@ function loadOrdersTable(orders) {
     var selectedToppings = [];
     var tr = "";
     var total = 0;
-    if (orders.length == 0)
+    if (orders != null && orders.length == 0)
     {
-        document.getElementById("noorders").innerHTML = "You don't have any orders";
+        document.getElementById("ordersTable").innerHTML = "<span style='font-size:30px;font-weight:bold;'>You don't have any orders</span>";
+        return;
     }
 
     for (order in orders) {

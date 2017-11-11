@@ -218,7 +218,9 @@
 	loginForm.style.display = "block";
 	document.getElementById('onPageContent').innerHTML = "You are in Login form. Input your email and passsword to access your account";
 	document.getElementById('onPageContent').focus();
-
+    if(logincustomerId == null){
+		document.getElementById("menu-item-59").style.display = "none";
+	}
 </script>
 
 <script src="lib/speech.js"></script>
