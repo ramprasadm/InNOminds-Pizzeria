@@ -314,9 +314,9 @@ app.post("/goToBilling", urlEncodedParser, function(request, response) {
         //response.send(result.docs);
         response.render('billingInformation',{
             id:result.docs[0]._id,
+            rev:result.docs[0]._rev,
             address1:result.docs[0].address1,
             address2:result.docs[0].address2,
-            street:result.docs[0].street,
             state:result.docs[0].state,
             country:result.docs[0].country,
             zip:result.docs[0].zip,
@@ -329,7 +329,7 @@ app.post("/goToBilling", urlEncodedParser, function(request, response) {
 
 app.post("/saveBilling", urlEncodedParser, function (request, response) {
     var body = request.body;
-    console.log("addressid::::::::::::%s",body.address.id);
+    //console.log("addressid::::::::::::%s,%s",body.address.id,body.address.rev);
     var orderId = ""+ Math.floor(Math.random()*89999+10000);   
     db.insert({
         name: "order",
@@ -339,23 +339,33 @@ app.post("/saveBilling", urlEncodedParser, function (request, response) {
         _id:orderId,
         deliveryDate : body.deliveryDate,
         orderStatus: "Pending Payment"
-    },{
-        name: 'address',
-        customerId: body.customerId,
-        address1: body.address.address1,
-        address2: body.address.address2,
-        state: body.address.state,
-        country: body.address.country,
-        zip: body.address.zip,
-        city: body.address.city,
-        _id:body.address.id
-    }, function (err, doc) {
+    },function (err, doc) {
         if (err) {
             console.log(err);
             return response.sendStatus(500);
 
         } else {
-            response.render('payment',{orderId:orderId});  
+            db.insert({
+                name: 'address',
+                customerId: body.customerId,
+                address1: body.address.address1,
+                address2: body.address.address2,
+                state: body.address.state,
+                country: body.address.country,
+                zip: body.address.zip,
+                city: body.address.city,
+                _id:body.address.id,
+                _rev:body.address.rev
+            }, function (err, doc) {
+                if (err) {
+                    console.log(err);
+                    return response.sendStatus(500);
+        
+                } else {
+                    response.render('payment',{orderId:orderId}); 
+                }
+            });
+             
         }
     });
 });
