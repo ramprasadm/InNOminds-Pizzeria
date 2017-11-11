@@ -42,6 +42,8 @@
 <script>
     var modal = document.getElementById('otpModal');
     var span = document.getElementsByClassName("closeotp")[0];
+    orderId = "<%=orderId%>";
+    console.log("orderId in Payment::",orderId);
     modal.style.display = "none";
 	span.onclick = function () {
 		modal.style.display = "none";

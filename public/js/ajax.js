@@ -165,6 +165,7 @@ $(document).on('submit', '#billingForm', function () {
   data.address.country = document.getElementById("country").value;
   data.address.zip = document.getElementById("zip").value;
   data.address.id = addressId;
+  data.deliveryDate = document.getElementById("deliveryDate").value;
   $.ajax({
     type: "Post",
     url: "saveBilling",

@@ -59,6 +59,7 @@ var selectedToppings = [];
 var productsSelected = false;
 var logincustomerId = null;
 var addressId = null;
+var orderId = null;
 
 function addRemovePizza(pizzaDetails){
     var checked = document.getElementById(pizzaDetails.checkboxid).checked;
@@ -161,6 +162,9 @@ function loadOrdersTable(orders) {
     for (order in orders) {
         selectedPizzas = orders[order].selectedPizzas == undefined ? [] : orders[order].selectedPizzas;
         selectedToppings = orders[order].selectedToppings == undefined ? [] : orders[order].selectedToppings ;
+        tr+="OrderId  :<span style='font-weight:bold'>"+ (orders[order]._id == undefined ? '        ':orders[order]._id) +"</span><span style='margin-right:30px;'></span>";
+        tr+="Order Delivery Date  :<span style='font-weight:bold'>"+ (orders[order].deliveryDate == undefined ? '':orders[order].deliveryDate) +"</span><span style='margin-right:30px;'></span>";
+        tr+="OrderStatus  :<span style='font-weight:bold'>"+ (orders[order].orderStatus == undefined ? '        ':orders[order].orderStatus) +"</span><span style='margin-right:30px;'></span>";
         tr+="<table>";
         tr+='<tr><th scope="col">Item</th><th scope="col">Quantity</th><th scope="col">unit Price</th><th scope="col">Total Price</th></tr>';
         tr+="<tbody>"

@@ -330,11 +330,15 @@ app.post("/goToBilling", urlEncodedParser, function(request, response) {
 app.post("/saveBilling", urlEncodedParser, function (request, response) {
     var body = request.body;
     console.log("addressid::::::::::::%s",body.address.id);
+    var orderId = ""+ Math.floor(Math.random()*89999+10000);   
     db.insert({
         name: "order",
         customerId: body.customerId,
         selectedPizzas: body.selectedPizzas,
-        selectedToppings: body.selectedToppings
+        selectedToppings: body.selectedToppings,
+        _id:orderId,
+        deliveryDate : body.deliveryDate,
+        orderStatus: "Pending Payment"
     },{
         name: 'address',
         customerId: body.customerId,
@@ -351,7 +355,7 @@ app.post("/saveBilling", urlEncodedParser, function (request, response) {
             return response.sendStatus(500);
 
         } else {
-            response.render('payment');  
+            response.render('payment',{orderId:orderId});  
         }
     });
 });

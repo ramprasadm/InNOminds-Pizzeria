@@ -1,48 +1,57 @@
 <form id="billingForm" action="javascript:void(0);" method="post">
 	<fieldset>
+		<legend>Delivery Details</legend>
+		<div>
+			<label for="deliveryDate">Delivery Date
+				<input type="date" id="deliveryDate" name="deliveryDate" required>
+				</input>
+			</label>
+		</div>
+	</fieldset>
+	<fieldset>
 		<legend>Billing address</legend>
 		<div>
 			<label>Address Line1
-												<input type="text" id="address1" name="address1" required>
-												</textarea>
-											</label>
+				<input type="text" id="address1" name="address1" required>
+				</textarea>
+			</label>
 		</div>
 		<div>
 			<label>Address Line2
-												<input type="text" id="address2" name="address2" required>
-												</textarea>
-											</label>
+				<input type="text" id="address2" name="address2" required>
+				</textarea>
+			</label>
 		</div>
 		<div>
 			<label>City
-												<input type="text" id="city" name="city" required>
-												</textarea>
-											</label>
+				<input type="text" id="city" name="city" required>
+				</textarea>
+			</label>
 		</div>
 		<div>
 			<label>State
-												<input type="text" id="state" name="state" required>
-												</textarea>
-											</label>
+				<input type="text" id="state" name="state" required>
+				</textarea>
+			</label>
 		</div>
 		<div>
 			<label>Zip
-												<input type="text" id="zip" name="zip" required>
-												</textarea>
-											</label>
+				<input type="text" id="zip" name="zip" required>
+				</textarea>
+			</label>
 		</div>
 		<div>
 			<label for="country">Country
-												<input id="country" name="country" list="country-names" type="text" required>
-												<datalist id="country-names">
-													<option label="USA" value="USA">USA</option>
-													<option label="UK" value="UK"></option>
-													<option label="India" value="India"></option>
-													<option label="Bulgaria" value="Bulgaria"></option>
-													<option label="Japan" value="Japan"></option>
-													<option label="Australia" value="Australia"></option>
-												</datalist>
-											</label>
+				<input id="country" name="country" list="country-names" type="text" required>
+				<datalist id="country-names">
+					<option label="USA" value="USA">USA</option>
+					<option label="UK" value="UK"></option>
+					<option label="India" value="India"></option>
+					<option label="Bulgaria" value="Bulgaria"></option>
+					<option label="Japan" value="Japan"></option>
+					<option label="Australia" value="Australia"></option>
+				</datalist>
+			</label>
 		</div>
 	</fieldset>
 
@@ -53,7 +62,20 @@
 	</fieldset>
 </form>
 <script>
-	var data= {
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1; //January is 0!
+	var yyyy = today.getFullYear();
+	if (dd < 10) {
+		dd = '0' + dd
+	}
+	if (mm < 10) {
+		mm = '0' + mm
+	}
+
+	today = yyyy + '-' + mm + '-' + dd;
+	document.getElementById("deliveryDate").setAttribute("min", today);
+	var data = {
 		address1: "<%=address1%>",
 		address2: "<%=address2%>",
 		country: "<%=country%>",
@@ -61,8 +83,8 @@
 		state: "<%=state%>",
 		street: "<%=street%>",
 		city: "<%=city%>",
-		id:"<%=id%>"
+		id: "<%=id%>"
 	}
-	console.log("billing address*******************",data);
+	console.log("billing address*******************", data);
 	loadBillingInformation(data);
 </script>
