@@ -54,11 +54,13 @@ $(document).on('submit', '#loginForm', function () {
     username: username,
     pwd: pwd   
   }
+  
     $.ajax({
     type: "Post",
     url: "customerAuthPage",
     data: myusername,
     success: function (data) {
+		if(data.exist){
       logincustomerId = data.customerId;
       document.getElementById("menu-item-59").style.display = "block";
       if(productsSelected == false){
@@ -67,7 +69,12 @@ $(document).on('submit', '#loginForm', function () {
       else{
         goToBilling();
       }
-      
+		}
+		else{
+		  document.getElementById('loginFormMessage').style.color = 'red';		  
+		  document.getElementById('loginFormMessage').innerHTML = "Invalid Credentials.";
+		  document.getElementById('loginFormMessage').style.display="block";
+		}
     },
     error: function (err) {
       console.log(err);
@@ -192,7 +199,7 @@ $(document).on('submit', '#registrationForm', function () {
   var email = document.getElementById("email").value;
   var phone = document.getElementById("phone").value;
   
-  var myusername = {
+  var regform = {
     username:username,
 	pwd:pwd,
 	lastname:lastname,
@@ -201,18 +208,46 @@ $(document).on('submit', '#registrationForm', function () {
 	email:email,
 	phone:phone   
   }
+  
+  
   $.ajax({
     type: "Post",
-    url: "saveRegistration",
-    data: myusername,
+    url: "regPreAuth",
+    data: regform,
     success: function (data) {
-      $("#pageContent").html(data);
-      //console.log(data);
+      if(data.exist){
+		  document.getElementById('registrationFormMessage').style.color = 'red';		  
+		  document.getElementById('registrationFormMessage').innerHTML = "User already Registered with this email address.Plese select another email.";
+		  document.getElementById("registrationFormMessage").style.display="block";
+	  }
+	  else {
+		 document.getElementById("registrationFormMessage").style.display="none"; 
+		$.ajax({
+			type: "Post",
+			url: "saveRegistration",
+			data: regform,
+			success: function (data) {
+			  //$("#pageContent").html(data);
+			  document.getElementById("registrationFormMessage").style.display="block";			  
+			  document.getElementById('registrationFormMessage').style.color = 'blue';		  
+			  document.getElementById('registrationFormMessage').innerHTML = "User has successfully Registered.Please login with the credentials.";
+			   
+			  
+			},
+			error: function (err) {
+			  console.log(err);
+			}
+		  });
+	  }
+      
     },
     error: function (err) {
-      console.log(err);
+		console.log("new");
+      //console.log(err);
     }
   });
+  
+  
 });
 $(document).on('click', '#saveOrder', function () {
   var myusername = {};

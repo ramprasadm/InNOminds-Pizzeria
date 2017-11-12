@@ -233,19 +233,48 @@ app.post("/saveRegistration", urlEncodedParser, function(request, response) {
         } else {
            console.log("user registered", doc);	  
         }
-        response.render('login');
+        response.send({"exist":true});
          console.log("user registered");
         }
 
     );
 });
 
+app.post("/regPreAuth", urlEncodedParser, function(request, response) {
+       var  body = request.body;
+			
+			
+			console.log(body.email);
+
+			//console.log(body.username+": username");
+
+			db.find({selector:{email:body.email}}, function(er, result) {
+				if (er) {
+					console.log(er);
+                 throw er;
+                }
+			   else{
+				   		if(result.docs.length){
+							response.send({"exist":true});
+						}
+						else{
+							
+							response.send({"exist":false});
+							
+						}
+				   
+			   }
+		});
+			
+});
+
 app.post("/customerAuthPage", urlEncodedParser, function(request, response) {
      var  body = request.body;
+			
+			
+			console.log(body.username);
 
-			console.log(body);
-
-			console.log(body.username+": username");
+			//console.log(body.username+": username");
 
 			db.find({selector:{email:body.username}}, function(er, result) {
 				if (er) {
@@ -259,12 +288,13 @@ app.post("/customerAuthPage", urlEncodedParser, function(request, response) {
 						if(result.docs[i].password === body.pwd){
 							console.log('  Doc id: %s', result.docs[i]._id);
                             //response.render('products');
-                            response.send({customerId:result.docs[i]._id});
+                            response.send({customerId:result.docs[i]._id,"exist":true});
+							
 						}
 						else{
 							console.log(result);
-							response.send('Sorry, you\'re not logged in correctly.please try to login again');
-							response.render('login');
+							response.send({"exist":false});
+							//response.render('login');
 							//response.sendFile(path.join(__dirname, '/views', 'unauthorised.html'));
 						}
 				   }
