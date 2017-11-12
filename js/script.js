@@ -237,3 +237,18 @@ function goToOrders(){
     }
   })
 }
+
+function updateOrderStatus(status){
+    $.ajax({
+    type: "Post",
+    url: "updateOrder",
+    data: {orderId:orderId, status:status},
+    success: function (data) {
+      //$("#pageContent").html(data);
+      orderId = null;
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  })
+}

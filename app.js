@@ -334,6 +334,24 @@ app.post("/goToOrders", urlEncodedParser, function(request, response) {
     
 });
 
+app.post("/updateOrder", urlEncodedParser, function(request, response) {
+    console.log("update called %s", JSON.stringify(request.body));
+    db.find({selector:{_id:request.body.orderId,name:"order"}}, function(er, result) {
+        if (er) {
+            console.log(er);
+         throw er;
+       }
+       try{
+        console.log(JSON.stringify(result.docs[0]));
+        result.docs[0].orderStatus = request.body.status;
+        db.insert(result.docs[0]);
+        }catch(err){
+            console.log("error >>>>",err);
+        }
+    });
+    
+});
+
 app.post("/goToBilling", urlEncodedParser, function(request, response) {
     db.find({selector:{customerId:request.body.customerId,name:"address"}}, function(er, result) {
         if (er) {

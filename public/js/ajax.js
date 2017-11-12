@@ -303,6 +303,10 @@ $(document).on('click', '#goToBilling', function () {
 
 $(document).on('click', '#proceedToPay', function () {
   document.getElementById("otpModal").style.display="block";
+  document.getElementById("otpModal").focus();
+  document.getElementById("paymentDetails").style.display="none";
+  document.getElementById('onPageContent').innerHTML = "Enter OTP recieved to your mobile number.";
+  document.getElementById('onPageContent').focus();
 });
 $(document).on('click', '#cancelOrder', function () {
   document.getElementById("popupcontent").innerHTML = "Order cancelled.";
@@ -310,14 +314,19 @@ $(document).on('click', '#cancelOrder', function () {
   document.getElementById("onPageContent").focus();
 });
 $(document).on('click', '#cancelotp', function () {
-  document.getElementById("modalContent").innerHTML = "Payment Failed.";
-  document.getElementById("onPageContent").innerHTML = "Payment Failed.";
-  document.getElementById("onPageContent").focus();
+  document.getElementById("modalContent").innerHTML = "<label for='myorders'> Payment Failed.</label><br/><button id='myorders' onClick='goToOrders()'>My Orders</button>";
+  document.getElementById("onPageContent").innerHTML = "";
+  document.getElementById("paymentDetails").style.display="none";
+  document.getElementById("myorders").focus();
+  updateOrderStatus("Payment Failed");
 });
 $(document).on('click', '#submitotp', function () {
-  document.getElementById("modalContent").innerHTML = "Payment Successful. Order successfully placed";
-  document.getElementById("onPageContent").innerHTML = "Payment Successful. Order successfully placed";
-  document.getElementById("onPageContent").focus();
+  document.getElementById("modalContent").innerHTML = "<label for='myorders'> Payment Successful. Order successfully placed.</label><br/><button id='myorders' onClick='goToOrders()'>My Orders</button>";
+  document.getElementById('onPageContent').innerHTML = "Payment Successful. Order successfully placed. Order Id:"+orderId;
+  document.getElementById('onPageContent').focus();
+  document.getElementById("myorders").focus();
+  updateOrderStatus("Delivery Pending");
+  orderId=null;
 });
 
 $(document).on('click', '#closepopup', function () {

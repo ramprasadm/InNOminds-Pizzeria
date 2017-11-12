@@ -1,3 +1,4 @@
+<div id="reviewOrderDetails" tabindex="0">
 <form id="orders">
     <fieldset>
         <legend tabindex="1">My Orders</legend>
@@ -6,7 +7,10 @@
         </div>
     </fieldset>
 </form>
+</div>
 <script>
     var orders = JSON.parse('<%-JSON.stringify(orders)%>');
+    document.getElementById('onPageContent').innerHTML = "You are in My orders page.";
+    document.getElementById('onPageContent').focus();
     loadOrdersTable(orders);
 </script>
