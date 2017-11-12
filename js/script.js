@@ -252,3 +252,33 @@ function updateOrderStatus(status){
     }
   })
 }
+
+function goToContactus(){
+    $.ajax({
+    type: "Post",
+    url: "goToContactus",
+    data: {},
+    success: function (data) {
+      $("#pageContent").html(data);
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  })
+}
+
+function goToLogin(){
+    $.ajax({
+        type: "Post",
+        url: "goToLogin",
+        data: {},
+        success: function (data) {
+          $("#pageContent").html(data);
+          document.getElementById('onPageContent').innerHTML = "You are in login form. Provide your credentials to Sign in your account";
+          document.getElementById('onPageContent').focus();
+        },
+        error: function (err) {
+          console.log(err);
+        }
+    })
+}

@@ -70,7 +70,7 @@
 						<a title="My Orders" href="#" onClick="goToOrders()">My Orders</a>
 					</li>
 					<li id="menu-item-416" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-416">
-						<a href="#">Contact</a>
+						<a title="Contact us" href="#" onClick="goToContactus()">Contact</a>
 					</li>
 				</ul>
 			</div>
@@ -94,30 +94,8 @@
 							<div id="pageContent">
 									
 
-								<form id="loginForm" action="javascript:void(0)" method="post">
-									<fieldset>
-										<legend>Login Form</legend>
-										<div id="loginFormMessage" style="display:none"> </div>	
-										<div>
-											<label>Email address
-												<input type="text" id="userEmail" name="userEmail" required>
-												</textarea>
-											</label>
-										</div>
-										<div>
-											<label>Password
-												<input type="password" id="passowrd" name="password" required>
-												</textarea>
-											</label>
-										</div>
-										<div>
-											<button id="customerLogin" type=submit aria-label="Sign in">Sign In</button>
-										</div>
-										<div>
-											<a href="#" id="registration">Sign Up</a>
-										</div>
-									</fieldset>
-								</form>
+									<Label class="welcome">Welcome to Pizzeria</label>
+									<button onclick="goToProducts()">Order Pizza</button><button onclick="goToLogin()">Sign In</button>
 
 								<!-- The Modal -->
 								<div id="myModal" class="modal">
@@ -196,28 +174,7 @@
 			modal1.style.display = "none";
 		}
 	}
-
-	var goto = function (showSection) {
-		hideAllSections();
-		if (showSection === 'loginForm') {
-			loginForm.style.display = "block";
-			document.getElementById('onPageContent').innerHTML = "You are in Login form. Input your email and passsword to access your account";
-		}
-		location.href = "#";
-		document.getElementById('onPageContent').focus();
-	}
-	var registrationForm = document.getElementById('registrationForm');
-	var loginForm = document.getElementById('loginForm');
-
-
-	var hideAllSections = function () {
-
-		loginForm.style.display = "none";
-
-	}
-	hideAllSections();
-	loginForm.style.display = "block";
-	document.getElementById('onPageContent').innerHTML = "You are in Login form. Input your email and passsword to access your account";
+	document.getElementById('onPageContent').innerHTML = "Welcome to Pizzeria.";
 	document.getElementById('onPageContent').focus();
     if(logincustomerId == null){
 		document.getElementById("menu-item-59").style.display = "none";

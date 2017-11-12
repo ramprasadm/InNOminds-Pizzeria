@@ -334,6 +334,10 @@ app.post("/goToOrders", urlEncodedParser, function(request, response) {
     
 });
 
+app.post("/goToContactus", urlEncodedParser, function(request, response) {
+    response.render('contactus');
+});
+
 app.post("/updateOrder", urlEncodedParser, function(request, response) {
     console.log("update called %s", JSON.stringify(request.body));
     db.find({selector:{_id:request.body.orderId,name:"order"}}, function(er, result) {
