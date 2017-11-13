@@ -40,12 +40,25 @@ function setFormValue(locvalue) {
     if (locvalue == null || locvalue == undefined)
         return;
         
-    locvalue =  locvalue.replace(/ /g, ";").toLowerCase();
+    locvalue =  locvalue.replace(/ /g, "").toLowerCase();
 
     if (document.activeElement.tagName == "INPUT" && document.activeElement.type == "text") {
         document.activeElement.value = locvalue;
+    }  else if (document.activeElement.tagName == "INPUT" && document.activeElement.type == "checkbox") {
+        if(locvalue == document.activeElement.value)
+            document.activeElement.checked = true;
     } else if (document.activeElement.tagName == "INPUT" && document.activeElement.type == "password") {
         document.activeElement.value = locvalue;
+    } else if ((document.activeElement.tagName == "INPUT" && document.activeElement.type == "button") ||
+                (document.activeElement.tagName == "INPUT" && document.activeElement.type == "submit")|| 
+                document.activeElement.tagName == "BUTTON" || document.activeElement.tagName == "A") {
+        if(locvalue == document.activeElement.value){
+            playAudioTTS();
+            document.activeElement.click();
+        }
+    }
+    else if (document.activeElement.tagName == "INPUT" && document.activeElement.type == "date") {
+        document.activeElement.value = locvalue;  
     }
     else if (document.activeElement.tagName == "INPUT" && document.activeElement.type == "radio") {
         var values = locvalue.split(" ");
@@ -58,6 +71,9 @@ function setFormValue(locvalue) {
         setSelectedValue(document.activeElement, locvalue);
     }
     stopListening();
+    playAudioTTS();
+}
+function playAudioTTS(){
     wavsource.src = '/api/speak?text= You just said ' + document.activeElement.value;
     audio.load();
     audio.play();
@@ -115,11 +131,17 @@ function addEventListeners(selector, type, handler) {
     }
 }
 
-addEventListeners('input', 'focus', function (e) {
-     startListening();
- });
+function triggerListeners(){
+    addEventListeners('input', 'focus', function (e) {
+        startListening();
+    });
 
-addEventListeners('select', 'focus', function (e) {
-     startListening();
-});
+    addEventListeners('select', 'focus', function (e) {
+        startListening();
+    });
 
+    addEventListeners('button', 'focus', function (e) {
+        startListening();
+    });
+}
+triggerListeners();

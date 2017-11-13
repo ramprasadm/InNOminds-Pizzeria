@@ -18,8 +18,8 @@
             <label for="wallet3">Wallet 3</label>
         </div>
         <div style="width:100%;float:right;">
-            <button id="cancelOrder" type=button>Cancel Order</button>
-            <button id="proceedToPay" type=button>Proceed to Pay</button>
+            <button id="cancelOrder" type=button value="cancelorder">Cancel Order</button>
+            <button id="proceedToPay" type=button value="proceedtopay">Proceed to Pay</button>
         </div>
     </fieldset>
 </form>
@@ -34,8 +34,8 @@
                 Enter OTP:
                 <input type="text" name="otp" id="otp" tabindex="0">
             </label>
-            <button id="cancelotp" name="cancelotp">Cancel</button>
-            <button id="submitotp" name="submitotp">Submit</button>
+            <button id="cancelotp" name="cancelotp" value="cancel">Cancel</button>
+            <button id="submitotp" name="submitotp" value="submit">Submit</button>
         </div>
     </div>
     </p>
@@ -49,4 +49,5 @@
     document.getElementById('orderId').innerHTML = orderId;
     document.getElementById('onPageContent').innerHTML = "You are in payment page. Choose your payment option";
     document.getElementById('onPageContent').focus();
+    triggerListeners();
 </script>

@@ -9,6 +9,7 @@
 </form>
 </div>
 <script>
+    triggerListeners();
     var orders = JSON.parse('<%-JSON.stringify(orders)%>');
     document.getElementById('onPageContent').innerHTML = "You are in My orders page.";
     document.getElementById('onPageContent').focus();
