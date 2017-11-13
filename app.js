@@ -18,8 +18,8 @@ fs = require('fs');
 
 var watson = require('watson-developer-cloud');
 var url = require('url');
-var BLUEMIX_USERNAME = 'ee31be26-8168-44e7-95d0-8a20dc70a9da';
-var BLUEMIX_PASSWORD = 'mzAtejCdkmDL';
+var BLUEMIX_USERNAME = '95412f49-7457-4e6e-8e80-15bd715e4277';
+var BLUEMIX_PASSWORD = '8DQQa1bzvjFt';
 
 /*var express = require('express'),
     routes = require('./routes'),
