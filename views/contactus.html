@@ -1,1 +1,36 @@
-<iframe src="http://localhost:3000" frameborder="0" width="100%" height="500px"></iframe>
+<legend>
+            <h1 class="entry-title">Contact Us</h1>
+</legend>            
+
+<div id="contactOptions"  tabindex="0">
+<fieldset>
+<button id="callme" onclick="callme()">Call me</button> <button id="chat"  onclick="chat()">I want to Chat</button>
+</fieldset>
+</div>
+<div id="callph" tabindex="0">
+    <Label for="phoneNumber">Enter Phone Number:</Label><input type="text" id="phoneNumber" palce-holder="Phone Number" required/>
+    <button name="call" onclick="call()">Call</button>
+</div>
+<iframe id="chatbot" src="" frameborder="0" width="100%" height="500px"></iframe>
+
+<script>
+    function callme(){
+        document.getElementById("callph").style.display = "block";
+        document.getElementById("contactOptions").style.display = "none";
+        document.getElementById("callph").focus();
+    }
+
+    function chat(){
+        document.getElementById("chatbot").style.display = "block";
+        document.getElementById("contactOptions").style.display = "none";
+        document.getElementById("chatbot").src="https://pizzeriabot.mybluemix.net/";
+    }
+
+      function call(){
+         document.getElementById("callph").innerHTML = "You will recieve a call approximatly in 2 minutes";
+         document.getElementById("callph").focus();
+    }
+
+     document.getElementById("callph").style.display = "none";
+     document.getElementById("chatbot").style.display = "none";
+</script>
