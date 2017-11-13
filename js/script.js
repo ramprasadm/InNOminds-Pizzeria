@@ -231,6 +231,8 @@ function goToOrders(){
     data: {customerId:logincustomerId},
     success: function (data) {
       $("#pageContent").html(data);
+      document.getElementById('onPageContent').innerHTML = "You are in My Orders page.";
+      document.getElementById('onPageContent').focus();
     },
     error: function (err) {
       console.log(err);
@@ -260,6 +262,8 @@ function goToContactus(){
     data: {},
     success: function (data) {
       $("#pageContent").html(data);
+       document.getElementById('onPageContent').innerHTML = "You can request a call or chat with representative";
+       document.getElementById('onPageContent').focus();
     },
     error: function (err) {
       console.log(err);
