@@ -1,0 +1,23 @@
+<div id="myorder" tabindex="0">
+<form id="order">
+    <fieldset>
+        <legend tabindex="1">Order Details</legend>
+        <div style="width:100%;float:right;" id="ordersTable">
+
+        </div>
+    </fieldset>
+</form>
+</div>
+<script>
+    var order = JSON.parse('<%-JSON.stringify(order)%>');
+    console.log("order is :",order);
+    document.getElementById('onPageContent').innerHTML = "You are in My orders page.";
+    document.getElementById('onPageContent').focus();
+    var orders = [];
+    orders.push(order);
+    if(orders.length == undefined || (orders.length == 1 && orders[0]._id == undefined)){
+        document.getElementById('ordersTable').innerHTML = "<span style='font-size:20px;font-weight:bold;'>Order not found, Please try again with correct order id</span>";
+    }else{
+        loadOrdersTable(orders);
+    }
+</script>

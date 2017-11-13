@@ -46,7 +46,10 @@ function setFormValue(locvalue) {
         document.activeElement.value = locvalue;
     }  else if (document.activeElement.tagName == "INPUT" && document.activeElement.type == "checkbox") {
         if(locvalue == document.activeElement.value)
-            document.activeElement.checked = true;
+            {
+                document.activeElement.checked = true;
+                document.activeElement.click();
+            }
     } else if (document.activeElement.tagName == "INPUT" && document.activeElement.type == "password") {
         document.activeElement.value = locvalue;
     } else if ((document.activeElement.tagName == "INPUT" && document.activeElement.type == "button") ||

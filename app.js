@@ -319,7 +319,6 @@ app.post("/customerAuthPageProceedOrder", urlEncodedParser, function(request, re
      response.render('billingInformation');
 });
 app.post("/goToOrders", urlEncodedParser, function(request, response) {
-    console.log("go to orders called %s", JSON.stringify(request.body));
     db.find({selector:{customerId:request.body.customerId,name:"order"}}, function(er, result) {
         if (er) {
             console.log(er);
@@ -332,6 +331,20 @@ app.post("/goToOrders", urlEncodedParser, function(request, response) {
         }
     });
     
+});
+
+app.post("/ordersearch", urlEncodedParser, function(request, response) {
+    db.find({selector:{name:"order",_id:request.body.orderid}}, function(er, result) {
+        if (er) {
+            console.log(er);
+            throw er;
+       }
+       try{
+            response.render('order',{order:result.docs[0] == undefined ? {} : result.docs[0]});
+        }catch(err){
+            console.log("error >>>>",err);
+        }
+    });
 });
 
 app.post("/goToContactus", urlEncodedParser, function(request, response) {

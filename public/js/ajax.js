@@ -247,8 +247,21 @@ $(document).on('submit', '#registrationForm', function () {
       //console.log(err);
     }
   });
-  
-  
+});
+$(document).on('submit', '#searchform', function () {
+  var orderid =  document.getElementById("search").value;
+ $.ajax({
+   type: "Post",
+   url: "ordersearch",
+   data: {orderid:orderid},
+   success: function (data) {
+    $("#pageContent").html(data);
+   },
+   error: function (err) {
+   console.log("new");
+     //console.log(err);
+   }
+ });
 });
 $(document).on('click', '#saveOrder', function () {
   var myusername = {};
