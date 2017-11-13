@@ -77,6 +77,8 @@ function setFormValue(locvalue) {
     playAudioTTS();
 }
 function playAudioTTS(){
+    if(document.activeElement.value == undefined)
+        return; 
     wavsource.src = '/api/speak?text= You just said ' + document.activeElement.value;
     audio.load();
     audio.play();
