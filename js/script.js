@@ -286,3 +286,15 @@ function goToLogin(){
         }
     })
 }
+
+function logOut(){
+selectedPizzas = [];
+selectedToppings = [];
+productsSelected = false;
+logincustomerId = null;
+addressId = null;
+addressRev = null;
+orderId = null;
+ document.getElementById("menu-item-59").style.display = "none";
+ document.getElementById("menu-item-417").style.display = "none";
+}
