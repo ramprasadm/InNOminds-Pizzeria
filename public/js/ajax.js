@@ -230,9 +230,8 @@ $(document).on('submit', '#registrationForm', function () {
 			  //$("#pageContent").html(data);
 			  document.getElementById("registrationFormMessage").style.display="block";			  
 			  document.getElementById('registrationFormMessage').style.color = 'blue';		  
-			  document.getElementById('registrationFormMessage').innerHTML = "User has successfully Registered.Please login with the credentials.";
-			   
-			  
+			  document.getElementById('registrationFormMessage').innerHTML = "User has successfully Registered. Please click here to <a href='javascript:void(0)' onclick='goToLogin()'> login </a>";
+        document.getElementById('registrationFormMessage').focus();
 			},
 			error: function (err) {
 			  console.log(err);
@@ -289,7 +288,8 @@ $(document).on('click', '#goToBilling', function () {
         data: {},
         success: function (data) {
           $("#pageContent").html(data);
-          //console.log(data);
+          document.getElementById('onPageContent').innerHTML = "You are in login form. Provide your credentials to Sign in to your account";
+          document.getElementById('onPageContent').focus();
         },
         error: function (err) {
           console.log(err);
