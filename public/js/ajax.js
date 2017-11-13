@@ -63,6 +63,7 @@ $(document).on('submit', '#loginForm', function () {
 		if(data.exist){
       logincustomerId = data.customerId;
       document.getElementById("menu-item-59").style.display = "block";
+      document.getElementById("menu-item-417").style.display = "block";
       if(productsSelected == false){
         goToProducts();
       }
@@ -74,6 +75,7 @@ $(document).on('submit', '#loginForm', function () {
 		  document.getElementById('loginFormMessage').style.color = 'red';		  
 		  document.getElementById('loginFormMessage').innerHTML = "Invalid Credentials.";
 		  document.getElementById('loginFormMessage').style.display="block";
+      document.getElementById('loginFormMessage').focus();
 		}
     },
     error: function (err) {
