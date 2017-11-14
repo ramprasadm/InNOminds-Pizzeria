@@ -186,6 +186,7 @@ function loadOrdersTable(orders) {
         }
         tr += "<tr><td>Total</td><td></td><td></td><td style='align:right;'>" + total + "</td></tr></tbody>"
         tr+="</table><br>";
+        total = 0;
     }
     
     document.getElementById("ordersTable").innerHTML = tr;
