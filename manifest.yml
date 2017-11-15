@@ -3,8 +3,8 @@ applications:
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  name: StoreApp
-  host: StoreApp
+  name: Pizzariastore
+  host: Pizzariastore
   disk_quota: 1024M
   services:
   - StoreApp-cloudantNoSQLDB
